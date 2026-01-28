@@ -76,7 +76,7 @@ export const SimpleBullets = ({ items }: { items?: string[] }) => {
                     const descClass = getDescClass(isSubtitle);
 
                     return (
-                        <li key={idx} className={`flex flex-col items-start opacity-0 animate-fade-in-up ${titleItemMarginBottom}`} style={{ animationDelay: `${idx * 100}ms` }}>
+                        <li key={idx} className={`flex flex-col items-start opacity-0 animate-fade-in-up ${titleItemMarginBottom}`} style={{ animationDelay: `${Math.min(idx * 80, 400)}ms` }}>
                             <h3 className={`${titleClass} font-extrabold text-gray-900 ${titleMarginBottom} leading-tight`}>
                                 {title}
                             </h3>
@@ -93,12 +93,18 @@ export const SimpleBullets = ({ items }: { items?: string[] }) => {
                 const bulletTextClass = getBulletClass(isSub);
                 const isEmpty = item.trim() === '';
 
+                // Strip leading "- " or "- " prefix for markdown list items
+                let displayText = item.trim();
+                if (displayText.startsWith('- ')) {
+                    displayText = displayText.substring(2);
+                }
+
                 return (
-                    <li key={idx} className={`flex items-start leading-snug opacity-0 animate-fade-in-up ${isSub ? `ml-8 text-gray-600 ${bulletTextClass}` : `text-gray-800 font-medium ${bulletTextClass}`}`} style={{ animationDelay: `${idx * 100}ms` }}>
+                    <li key={idx} className={`flex items-start leading-snug opacity-0 animate-fade-in-up ${isSub ? `ml-8 text-gray-600 ${bulletTextClass}` : `text-gray-800 font-medium ${bulletTextClass}`}`} style={{ animationDelay: `${Math.min(idx * 60, 300)}ms` }}>
                         <span className={`mr-4 flex-shrink-0 flex items-center justify-center ${isVeryDense ? 'mt-1.5' : 'mt-2.5'} ${isSub ? 'text-gray-400' : 'text-dify-blue'}`}>
                             {!isEmpty && (isSub ? <div className="w-1.5 h-1.5 rounded-full bg-gray-400" /> : <div className="w-2 h-2 rounded-sm bg-dify-blue" />)}
                         </span>
-                        <span>{isEmpty ? <span className="invisible">.</span> : parseText(item.trim())}</span>
+                        <span>{isEmpty ? <span className="invisible">.</span> : parseText(displayText)}</span>
                     </li>
                 );
             })}
@@ -158,22 +164,29 @@ export const MatrixSlide: React.FC<SlideProps> = ({ slide }) => (
   <div className="flex flex-col h-full p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16 relative overflow-hidden">
       <BackgroundPattern />
       <SlideHeader title={slide.title} subtitle={slide.subtitle} />
-      <div className="flex-grow min-h-0 overflow-auto bg-white shadow-sm border border-gray-200 relative z-10">
+      <div className="flex-grow min-h-0 overflow-auto shadow-xl border-4 border-gray-100 relative z-10 rounded-lg">
         <table className="w-full text-left border-collapse">
-          <thead>
-            <tr className="bg-gray-50 border-b-2 border-dify-blue">
+          <thead className="sticky top-0">
+            <tr className="bg-gradient-to-r from-dify-blue to-blue-600 border-b-4 border-blue-700">
               {slide.tableData?.headers.map((h, i) => (
-                <th key={i} className="p-4 sm:p-6 font-bold text-sm sm:text-base uppercase tracking-wider text-dify-blue">{h}</th>
+                <th key={i} className="p-5 sm:p-7 font-extrabold text-base sm:text-lg uppercase tracking-widest text-white first:rounded-tl-lg last:rounded-tr-lg">
+                  {h}
+                </th>
               ))}
             </tr>
           </thead>
           <tbody>
             {slide.tableData?.rows.map((row, rIdx) => (
-              <tr key={rIdx} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+              <tr
+                key={rIdx}
+                className={`border-b-2 border-gray-100 transition-all duration-200 ${
+                  rIdx % 2 === 0 ? 'bg-white hover:bg-blue-50' : 'bg-gray-50 hover:bg-blue-50'
+                }`}
+              >
                 {row.map((cell, cIdx) => (
-                  <td key={cIdx} className="p-4 sm:p-6 text-base sm:text-lg text-gray-800 font-light">
-                    {cell === '✅' ? <div className="text-dify-blue font-bold flex items-center"><Check size={20} className="mr-2"/> Yes</div> : 
-                     cell === '✖️' ? <div className="text-gray-400 flex items-center"><X size={20} className="mr-2"/> -</div> : 
+                  <td key={cIdx} className="p-5 sm:p-7 text-lg sm:text-xl text-gray-800 leading-relaxed font-normal">
+                    {cell === '✅' ? <div className="text-green-600 font-bold flex items-center gap-2"><Check size={24} className="stroke-[3]"/> 是</div> :
+                     cell === '✖️' ? <div className="text-gray-400 flex items-center gap-2"><X size={24}/> 否</div> :
                      parseText(cell)}
                   </td>
                 ))}

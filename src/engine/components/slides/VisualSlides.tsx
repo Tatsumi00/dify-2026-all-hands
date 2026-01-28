@@ -8,11 +8,12 @@ interface SlideProps {
 }
 
 export const TitleSlide: React.FC<SlideProps> = ({ slide }) => (
-  <div className="flex flex-col h-full justify-center items-start p-12 sm:p-16 md:p-20 lg:p-24 bg-white relative overflow-hidden">
-      {/* Solid Blue Accent Bar Top */}
-      <div className="absolute top-0 left-0 w-full h-4 bg-dify-blue"></div>
+  <div className="flex h-full relative overflow-hidden bg-white">
+      {/* Solid Blue Accent Bar Top - Animated Width */}
+      <div className="absolute top-0 left-0 w-0 h-4 bg-dify-blue z-30 animate-[slideRight_1s_ease-out_forwards]"></div>
 
-      <div className="relative z-10 max-w-7xl w-full flex flex-col h-full justify-center">
+      {/* Left Side: Content (Golden Ratio ~62%) */}
+      <div className="w-full lg:w-[62%] flex flex-col justify-center items-start p-12 sm:p-16 md:p-20 lg:p-24 relative z-20 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
         <div className="mb-8 sm:mb-12">
             <div className="inline-block px-4 py-1 border border-black text-black font-bold text-sm tracking-[0.2em] uppercase mb-6">
             {slide.footer || "Product Primer"}
@@ -25,18 +26,45 @@ export const TitleSlide: React.FC<SlideProps> = ({ slide }) => (
             {slide.subtitle}
             </h2>
         </div>
-        
-        <div className="mt-auto pt-8 border-t border-gray-200 w-full flex justify-between items-end">
+
+        <div className="mt-auto pt-8 border-t border-gray-200 w-full">
             <div>
                 <p className="text-xl font-bold text-dify-blue tracking-tight mb-1">Solutions & Customer Success</p>
                 <p className="text-base text-gray-500">Infrastructure for Intuitive LLM App Development</p>
             </div>
-            {/* Decorative Element */}
-            {slide.visualContent && (
-                <div className="hidden md:block w-32 h-32 bg-gray-100 rounded-full overflow-hidden">
-                    {slide.visualContent}
-                </div>
-            )}
+        </div>
+      </div>
+
+      {/* Right Side: Geometric Hero Element (Golden Ratio ~38%) */}
+      <div className="hidden lg:flex w-[38%] bg-gradient-to-br from-blue-50 to-white relative overflow-hidden">
+        {/* Animated Geometric Shapes */}
+        <div className="absolute inset-0 flex items-center justify-center">
+
+          {/* Large Background Circle */}
+          <div className="absolute w-96 h-96 rounded-full border-8 border-dify-blue/10 animate-pulse"></div>
+
+          {/* Main Square (Rotated 45deg) */}
+          <div className="absolute w-64 h-64 bg-dify-blue rotate-45 opacity-90 shadow-2xl">
+            <div className="absolute inset-4 bg-white/20"></div>
+            <div className="absolute inset-8 bg-white/20"></div>
+          </div>
+
+          {/* Accent Elements */}
+          <div className="absolute -top-12 -right-12 w-40 h-40 bg-blue-600/20 rotate-12"></div>
+          <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-dify-blue/10 rounded-full"></div>
+
+          {/* Small Decorative Squares */}
+          <div className="absolute top-20 right-32 w-12 h-12 border-4 border-dify-blue/40 rotate-45"></div>
+          <div className="absolute bottom-32 left-20 w-16 h-16 bg-dify-blue/30"></div>
+        </div>
+
+        {/* Grid Pattern Overlay */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="w-full h-full" style={{
+            backgroundImage: `linear-gradient(0deg, transparent 24%, rgba(21, 94, 239, 0.3) 25%, rgba(21, 94, 239, 0.3) 26%, transparent 27%, transparent 74%, rgba(21, 94, 239, 0.3) 75%, rgba(21, 94, 239, 0.3) 76%, transparent 77%, transparent),
+            linear-gradient(90deg, transparent 24%, rgba(21, 94, 239, 0.3) 25%, rgba(21, 94, 239, 0.3) 26%, transparent 27%, transparent 74%, rgba(21, 94, 239, 0.3) 75%, rgba(21, 94, 239, 0.3) 76%, transparent 77%, transparent)`,
+            backgroundSize: '50px 50px'
+          }}></div>
         </div>
       </div>
   </div>
@@ -144,53 +172,16 @@ export const ChapterTitleSlide: React.FC<SlideProps> = ({ slide }) => (
 );
 
 export const EndSlide: React.FC<SlideProps> = ({ slide }) => {
-  const footerParts = slide.footer ? slide.footer.split('|').map(s => s.trim()) : ["Email: your.email@dify.ai"];
-  const emailPart = footerParts.find(p => p.toLowerCase().includes('email')) || "Email: your.email@dify.ai";
-  const githubPart = footerParts.find(p => p.toLowerCase().includes('github')) || "GitHub: YourGitHub";
-  
-  const email = emailPart.split(':')[1]?.trim() || "your.email@dify.ai";
-  const github = githubPart.split(':')[1]?.trim() || "YourGitHub";
-
   return (
-  <div className="flex h-full bg-white relative overflow-hidden">
-      {/* Left Side: THANK YOU - Golden Ratio (~61.8%) */}
-      <div className="w-[61.8%] h-full bg-white flex flex-col justify-center p-24 border-r border-gray-100">
-        <h1 className="text-[8rem] sm:text-[10rem] md:text-[12rem] font-extrabold leading-[0.8] tracking-tighter text-black mb-8">
-            THANK<br/>YOU
+    <div className="flex h-full bg-white relative overflow-hidden items-center justify-center">
+      {/* Centered THANK YOU */}
+      <div className="flex flex-col items-center justify-center text-center p-24">
+        <h1 className="text-[10rem] sm:text-[12rem] md:text-[14rem] font-extrabold leading-[0.8] tracking-tighter text-black mb-8">
+          THANK<br/>YOU
         </h1>
-        <div className="w-32 h-4 bg-dify-blue mb-8"></div>
-        <p className="text-3xl text-gray-500 font-light">{slide.subtitle}</p>
+        <div className="w-40 h-4 bg-dify-blue mb-8"></div>
+        <p className="text-4xl text-gray-500 font-light">{slide.subtitle}</p>
       </div>
-
-      {/* Right Side: Contact Info + QR - Golden Ratio (~38.2%) */}
-      <div className="w-[38.2%] h-full bg-gray-50 flex flex-col justify-center p-16 lg:p-20">
-        <div className="flex flex-col gap-10">
-            
-            <div className="space-y-6">
-                <a href="https://dify.ai" className="block group">
-                    <div className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1.5 group-hover:text-dify-blue transition-colors">Website</div>
-                    <div className="text-3xl font-bold text-black group-hover:text-dify-blue transition-colors">dify.ai</div>
-                </a>
-
-                <a href={`mailto:${email}`} className="block group">
-                    <div className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1.5 group-hover:text-dify-blue transition-colors">Email</div>
-                    <div className="text-3xl font-bold text-black group-hover:text-dify-blue transition-colors">{email}</div>
-                </a>
-                
-                <a href={`https://github.com/${github}`} className="block group">
-                    <div className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1.5 group-hover:text-dify-blue transition-colors">GitHub</div>
-                    <div className="text-3xl font-bold text-black group-hover:text-dify-blue transition-colors">{github}</div>
-                </a>
-            </div>
-
-            {/* Placeholder QR Code */}
-             <div className="w-40 h-40 bg-white p-2 border border-gray-200 flex items-center justify-center shadow-sm">
-                <div className="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400 text-xs text-center">
-                  QR Code
-                </div>
-            </div>
-        </div>
-      </div>
-  </div>
+    </div>
   );
 };

@@ -259,11 +259,11 @@ function SlideDeckApp() {
            {/* Render specific slide content - Key ensures state resets on slide change */}
            <SlideRenderer key={currentSlide.id} slide={currentSlide} />
            
-           {/* === WATERMARK (Copyright Protection) === */}
-           <Watermark 
-             text={user?.email || 'preview@dify.ai'} 
-             isDark={isDarkBackground} 
-           />
+           {/* === WATERMARK (Disabled) === */}
+           {/* <Watermark
+             text={user?.email || 'preview@dify.ai'}
+             isDark={isDarkBackground}
+           /> */}
            
            {/* === OVERLAYS (Always visible) === */}
            <>

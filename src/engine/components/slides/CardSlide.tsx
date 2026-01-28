@@ -12,7 +12,7 @@ const renderDescription = (text: string, tagColorClass: string) => {
   
   // STRICT COLOR ENFORCEMENT:
   // Only allow theme colors (blue), black, or white/gray scales.
-  // We interpret "Theme Blue" as Dify Blue (#155EEF / blue-600).
+  // We interpret "Theme Blue" as Dify Blue (#0033FF / Pantone Blue).
   // Green/Purple/Orange are NOT allowed for text.
   // Icons and Tags are EXEMPT from this rule (per previous instruction).
   
@@ -105,25 +105,25 @@ const CardItem: React.FC<{ item: any, widthClass?: string, style?: React.CSSProp
   // Titles must be Black (gray-900).
   // Descriptions must be Gray (gray-500/600).
   // No other text colors allowed.
+
+  let titleColor = "text-gray-900";
+  let descStyle = "text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed"; 
   
-  let titleColor = "text-gray-900"; 
-  let descStyle = "text-gray-500 text-xs sm:text-sm md:text-base"; 
-  
-  // ICON FIX: Allow icon dimension customization
-  let iconDim = "w-10 h-10 sm:w-12 sm:h-12"; 
+  // ICON FIX: Allow icon dimension customization - Enlarged for better visibility and consistency
+  let iconDim = "w-20 h-20 sm:w-24 sm:h-24"; 
 
   // Special Cards override
   if (item.title === "CORE POSITIONING" || item.title === "核心定位") {
       cardStyle = "bg-blue-600 border-blue-600 shadow-blue-200"; // Blue Background
-      iconBg = "bg-white/20 text-white border-white/20 backdrop-blur-sm"; // White Icon on Blue
+      iconBg = "bg-white/20 text-white border-white/30 backdrop-blur-sm"; // White Icon on Blue
       titleColor = "text-white"; // White Text
-      descStyle = "text-blue-50 text-lg sm:text-xl md:text-2xl font-extrabold leading-tight"; 
+      descStyle = "text-blue-50 text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight";
   } else if (item.title === "VALUE" || item.title === "核心价值") {
       // Let's make it Neutral Gray with Blue accent
       cardStyle = "bg-gray-50 border-gray-200 shadow-gray-100";
-      iconBg = "bg-white border-gray-200 text-dify-blue"; 
+      iconBg = "bg-white border-gray-300 text-dify-blue";
       titleColor = "text-gray-900";
-      descStyle = "text-gray-600 text-base sm:text-lg md:text-xl font-bold leading-snug";
+      descStyle = "text-gray-700 text-lg sm:text-xl md:text-2xl font-bold leading-snug";
   } else {
       // For standard cards, enforce borders/shadows but keep text strictly Black
       // We check tag to apply hover border color
@@ -165,26 +165,26 @@ const CardItem: React.FC<{ item: any, widthClass?: string, style?: React.CSSProp
              </div>
            )}
 
-           {/* Icon/Logo Box */}
-           <div className={`${iconDim} rounded-sm flex items-center justify-center mb-3 sm:mb-4 border transition-colors flex-shrink-0 ${iconBg}`}>
+           {/* Icon/Logo Box - Enhanced with shadow for depth */}
+           <div className={`${iconDim} rounded-sm flex items-center justify-center mb-4 sm:mb-5 border-2 transition-all duration-300 flex-shrink-0 shadow-sm group-hover:shadow-md ${iconBg}`}>
                {hasLogo ? (
-                  <img 
-                      src={item.logo} 
-                      alt={item.title} 
-                      className="max-w-[70%] max-h-[70%] object-contain" 
+                  <img
+                      src={item.logo}
+                      alt={item.title}
+                      className="max-w-[65%] max-h-[65%] object-contain"
                       onError={() => setImgError(true)}
                   />
                ) : (
-                  // ICON FIX: Preserve original color classes for Icons (EXEMPT)
-                  React.isValidElement(item.icon) ? React.cloneElement(item.icon as React.ReactElement<any>, { 
-                    size: undefined, 
-                    className: `w-3/4 h-3/4 p-0.5 ${(item.icon as React.ReactElement<any>).props.className || ''}`
+                  // ICON FIX: Increased icon size for better prominence
+                  React.isValidElement(item.icon) ? React.cloneElement(item.icon as React.ReactElement<any>, {
+                    size: undefined,
+                    className: `w-4/5 h-4/5 ${(item.icon as React.ReactElement<any>).props.className || ''}`
                   }) : null
                )}
            </div>
-           
-           {/* Title - Enforce Black/Gray-900 */}
-           <div className={`text-base sm:text-lg md:text-xl font-bold ${titleColor} mb-2 leading-tight pr-16 whitespace-pre-line`}>
+
+           {/* Title - Enhanced hierarchy with increased size and spacing */}
+           <div className={`text-2xl sm:text-3xl md:text-4xl font-extrabold ${titleColor} mb-4 sm:mb-5 leading-tight pr-16 whitespace-pre-line tracking-tight`}>
               {item.title}
            </div>
            
@@ -217,14 +217,14 @@ export const CardSlide: React.FC<CardSlideProps> = ({ slide }) => {
           return (
               // FIX: Removed 'h-full' and 'content-start' to prevent stretching cards vertically to full container height
               // This allows cards to wrap naturally based on content size and container width
-              <div className={`flex flex-wrap justify-center content-center gap-4 sm:gap-5 md:gap-6 lg:gap-8 w-full min-h-full p-4`}>
+              <div className={`flex flex-wrap justify-center content-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 w-full min-h-full p-4`}>
                   {items.map((item, idx) => (
-                      <CardItem 
-                        key={idx} 
-                        item={item} 
+                      <CardItem
+                        key={idx}
+                        item={item}
                         // FIX: Adjusted width for different breakpoints to ensure 3 per row (roughly 30%) or 2 per row on smaller screens
-                        widthClass="w-full sm:w-[calc(50%-0.75rem)] md:w-[calc(33.333%-1rem)] lg:w-[30%] min-w-[280px]" 
-                        style={{ animationDelay: `${idx * 100}ms` }}
+                        widthClass="w-full sm:w-[calc(50%-0.75rem)] md:w-[calc(33.333%-1rem)] lg:w-[30%] min-w-[280px]"
+                        style={{ animationDelay: `${Math.min(idx * 100, 500)}ms` }}
                       />
                   ))}
               </div>
