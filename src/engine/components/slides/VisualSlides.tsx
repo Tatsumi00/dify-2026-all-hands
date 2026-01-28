@@ -18,20 +18,13 @@ export const TitleSlide: React.FC<SlideProps> = ({ slide }) => (
             <div className="inline-block px-4 py-1 border border-black text-black font-bold text-sm tracking-[0.2em] uppercase mb-6">
             {slide.footer || "Product Primer"}
             </div>
-            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold text-black mb-6 leading-[0.9] tracking-tighter uppercase">
+            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold text-black mb-6 leading-[0.9] tracking-tighter">
             {slide.title}
             </h1>
             <div className="w-24 h-2 bg-dify-blue mb-8"></div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl text-gray-600 font-medium leading-snug max-w-4xl">
             {slide.subtitle}
             </h2>
-        </div>
-
-        <div className="mt-auto pt-8 border-t border-gray-200 w-full">
-            <div>
-                <p className="text-xl font-bold text-dify-blue tracking-tight mb-1">Solutions & Customer Success</p>
-                <p className="text-base text-gray-500">Infrastructure for Intuitive LLM App Development</p>
-            </div>
         </div>
       </div>
 
@@ -172,16 +165,49 @@ export const ChapterTitleSlide: React.FC<SlideProps> = ({ slide }) => (
 );
 
 export const EndSlide: React.FC<SlideProps> = ({ slide }) => {
+  const hasContent = Array.isArray(slide.content) && slide.content.some((line) => line.trim().length > 0);
+  const titleLines = (slide.title || 'THANK YOU').split('\n').filter(Boolean);
+
   return (
-    <div className="flex h-full bg-white relative overflow-hidden items-center justify-center">
-      {/* Centered THANK YOU */}
-      <div className="flex flex-col items-center justify-center text-center p-24">
-        <h1 className="text-[10rem] sm:text-[12rem] md:text-[14rem] font-extrabold leading-[0.8] tracking-tighter text-black mb-8">
-          THANK<br/>YOU
+    <div className="flex flex-col h-full bg-white relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-4 bg-dify-blue"></div>
+
+      <div className="flex-1 flex flex-col items-center justify-center text-center px-10 sm:px-16 md:px-24">
+        <h1 className="font-extrabold tracking-tight leading-[0.9] text-black">
+          {titleLines.map((line, idx) => (
+            <span key={idx} className="block text-7xl sm:text-8xl md:text-9xl">
+              {line}
+            </span>
+          ))}
         </h1>
-        <div className="w-40 h-4 bg-dify-blue mb-8"></div>
-        <p className="text-4xl text-gray-500 font-light">{slide.subtitle}</p>
+
+        {slide.subtitle && (
+          <p className="mt-6 text-2xl sm:text-3xl md:text-4xl text-gray-600 font-light">
+            {slide.subtitle}
+          </p>
+        )}
+
+        <div className="mt-10 w-32 sm:w-40 h-2 bg-dify-blue"></div>
+
+        {hasContent && (
+          <div className="mt-10 w-full max-w-5xl text-left">
+            <ul className="space-y-3">
+              {slide.content!.filter((line) => line.trim().length > 0).map((line, idx) => (
+                <li key={idx} className="flex items-start gap-3 text-lg sm:text-xl text-gray-600">
+                  <span className="mt-2 w-2 h-2 bg-dify-blue rounded-sm flex-shrink-0"></span>
+                  <span className="leading-relaxed">{parseText(line.trim())}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
+
+      {slide.footer && (
+        <div className="px-10 sm:px-16 md:px-24 py-8 text-center text-gray-500 border-t border-gray-200">
+          {slide.footer}
+        </div>
+      )}
     </div>
   );
 };

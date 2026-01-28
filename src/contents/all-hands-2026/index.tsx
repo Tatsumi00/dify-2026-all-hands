@@ -476,18 +476,25 @@ export const SLIDES: SlideData[] = [
   // 为什么引入 DRI
   {
     id: 22,
-    type: SlideType.CONTENT,
+    type: SlideType.CARDS,
     title: "为什么引入 DRI？",
     subtitle: "团队扩大到 100 人，大企业病早期症状出现",
-    content: [
-      "**议而不决**",
-      "一群人讨论一下午，没人拍板",
-      "",
-      "**执行推诿**",
-      "产品怪研发，研发怪测试，测试怪需求不明确",
-      "",
-      "**无成本干扰**",
-      "旁观者随意指手画脚，方案被迫平庸化"
+    items: [
+      {
+        title: "议而不决",
+        description: "一群人讨论一下午，没人拍板",
+        icon: <MessageSquare className="text-blue-500" />
+      },
+      {
+        title: "执行推诿",
+        description: "产品怪研发，研发怪测试，测试怪需求不明确",
+        icon: <GitBranch className="text-purple-500" />
+      },
+      {
+        title: "无成本干扰",
+        description: "旁观者随意指手画脚，方案被迫平庸化",
+        icon: <AlertTriangle className="text-orange-500" />
+      }
     ]
   },
 
