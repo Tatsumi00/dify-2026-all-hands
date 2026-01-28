@@ -153,10 +153,10 @@ const CardItem: React.FC<{ item: any, widthClass?: string, style?: React.CSSProp
   }
 
   return (
-       <div className={`${cardStyle} rounded-sm border p-4 sm:p-5 md:p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full relative overflow-hidden group ${widthClass} opacity-0 animate-fade-in-up`} style={style}>
+       <div className={`${cardStyle} rounded-sm border p-4 sm:p-5 md:p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-row items-center gap-4 sm:gap-5 h-full relative overflow-hidden group ${widthClass} opacity-0 animate-fade-in-up`} style={style}>
            {/* Tags - Moved to Top Right */}
            {item.tags && (
-             <div className="absolute top-4 right-4 flex flex-col items-end gap-1 z-20">
+             <div className="absolute top-3 right-3 flex flex-col items-end gap-1 z-20">
                {item.tags.map((tag: string, tIdx: number) => (
                  <span key={tIdx} className={`px-1.5 sm:px-2 py-0.5 rounded-sm text-[9px] sm:text-[10px] uppercase font-bold tracking-wider border ${tagColor}`}>
                    {tag}
@@ -165,8 +165,8 @@ const CardItem: React.FC<{ item: any, widthClass?: string, style?: React.CSSProp
              </div>
            )}
 
-           {/* Icon/Logo Box - Enhanced with shadow for depth */}
-           <div className={`${iconDim} rounded-sm flex items-center justify-center mb-4 sm:mb-5 border-2 transition-all duration-300 flex-shrink-0 shadow-sm group-hover:shadow-md ${iconBg}`}>
+           {/* Icon/Logo Box - Compact horizontal layout */}
+           <div className={`w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-sm flex items-center justify-center border-2 transition-all duration-300 flex-shrink-0 shadow-sm group-hover:shadow-md ${iconBg}`}>
                {hasLogo ? (
                   <img
                       src={item.logo}
@@ -175,22 +175,24 @@ const CardItem: React.FC<{ item: any, widthClass?: string, style?: React.CSSProp
                       onError={() => setImgError(true)}
                   />
                ) : (
-                  // ICON FIX: Increased icon size for better prominence
                   React.isValidElement(item.icon) ? React.cloneElement(item.icon as React.ReactElement<any>, {
                     size: undefined,
-                    className: `w-4/5 h-4/5 ${(item.icon as React.ReactElement<any>).props.className || ''}`
+                    className: `w-3/5 h-3/5 ${(item.icon as React.ReactElement<any>).props.className || ''}`
                   }) : null
                )}
            </div>
 
-           {/* Title - Enhanced hierarchy with increased size and spacing */}
-           <div className={`text-2xl sm:text-3xl md:text-4xl font-extrabold ${titleColor} mb-4 sm:mb-5 leading-tight pr-16 whitespace-pre-line tracking-tight`}>
-              {item.title}
-           </div>
-           
-           {/* Desc with Markdown Parsing - Enforce Blue/Black */}
-           <div className={`flex-grow w-full min-h-0`}>
-              {renderDescription(item.description, tagColor)}
+           {/* Content - Title + Description */}
+           <div className="flex-1 min-w-0 pr-12">
+               {/* Title */}
+               <div className={`text-lg sm:text-xl md:text-2xl font-extrabold ${titleColor} mb-1 sm:mb-2 leading-tight whitespace-pre-line tracking-tight`}>
+                  {item.title}
+               </div>
+
+               {/* Desc with Markdown Parsing */}
+               <div className="text-sm sm:text-base">
+                  {renderDescription(item.description, tagColor)}
+               </div>
            </div>
         </div>
   );
