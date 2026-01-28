@@ -153,20 +153,20 @@ const CardItem: React.FC<{ item: any, widthClass?: string, style?: React.CSSProp
   }
 
   return (
-       <div className={`${cardStyle} rounded-sm border p-4 sm:p-5 md:p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-row items-center gap-4 sm:gap-5 h-full relative overflow-hidden group ${widthClass} opacity-0 animate-fade-in-up`} style={style}>
+       <div className={`${cardStyle} rounded-sm border p-5 sm:p-6 md:p-8 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-row items-center gap-5 sm:gap-6 md:gap-8 h-full relative overflow-hidden group ${widthClass} opacity-0 animate-fade-in-up`} style={style}>
            {/* Tags - Moved to Top Right */}
            {item.tags && (
-             <div className="absolute top-3 right-3 flex flex-col items-end gap-1 z-20">
+             <div className="absolute top-4 right-4 flex flex-col items-end gap-1 z-20">
                {item.tags.map((tag: string, tIdx: number) => (
-                 <span key={tIdx} className={`px-1.5 sm:px-2 py-0.5 rounded-sm text-[9px] sm:text-[10px] uppercase font-bold tracking-wider border ${tagColor}`}>
+                 <span key={tIdx} className={`px-2 sm:px-3 py-1 rounded-sm text-[10px] sm:text-xs uppercase font-bold tracking-wider border ${tagColor}`}>
                    {tag}
                  </span>
                ))}
              </div>
            )}
 
-           {/* Icon/Logo Box - Compact horizontal layout */}
-           <div className={`w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-sm flex items-center justify-center border-2 transition-all duration-300 flex-shrink-0 shadow-sm group-hover:shadow-md ${iconBg}`}>
+           {/* Icon/Logo Box - Larger for better visibility */}
+           <div className={`w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-sm flex items-center justify-center border-2 transition-all duration-300 flex-shrink-0 shadow-sm group-hover:shadow-md ${iconBg}`}>
                {hasLogo ? (
                   <img
                       src={item.logo}
@@ -183,14 +183,14 @@ const CardItem: React.FC<{ item: any, widthClass?: string, style?: React.CSSProp
            </div>
 
            {/* Content - Title + Description */}
-           <div className="flex-1 min-w-0 pr-12">
+           <div className="flex-1 min-w-0 pr-14">
                {/* Title */}
-               <div className={`text-lg sm:text-xl md:text-2xl font-extrabold ${titleColor} mb-1 sm:mb-2 leading-tight whitespace-pre-line tracking-tight`}>
+               <div className={`text-xl sm:text-2xl md:text-3xl font-extrabold ${titleColor} mb-2 sm:mb-3 leading-tight whitespace-pre-line tracking-tight`}>
                   {item.title}
                </div>
 
                {/* Desc with Markdown Parsing */}
-               <div className="text-sm sm:text-base">
+               <div className="text-base sm:text-lg md:text-xl">
                   {renderDescription(item.description, tagColor)}
                </div>
            </div>
@@ -234,11 +234,11 @@ export const CardSlide: React.FC<CardSlideProps> = ({ slide }) => {
       }
 
       return (
-        <div className={`grid grid-cols-1 sm:grid-cols-2 ${count === 8 ? 'md:grid-cols-3 lg:grid-cols-4' : count === 4 ? 'md:grid-cols-2' : 'md:grid-cols-3'} gap-3 sm:gap-4 md:gap-5 lg:gap-6 w-full`}>
+        <div className={`grid grid-cols-1 sm:grid-cols-2 ${count === 8 ? 'md:grid-cols-3 lg:grid-cols-4' : count === 4 ? 'md:grid-cols-2' : 'md:grid-cols-3'} gap-4 sm:gap-5 md:gap-6 lg:gap-8 w-full h-full`}>
           {items.map((item, idx) => (
-             <div key={idx} className="min-h-0">
-                <CardItem 
-                  item={item} 
+             <div key={idx} className="min-h-0 h-full">
+                <CardItem
+                  item={item}
                   style={{ animationDelay: `${idx * 100}ms` }}
                 />
              </div>
