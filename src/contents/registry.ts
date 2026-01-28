@@ -2,6 +2,7 @@ import { SlideData } from '../engine/types';
 import { SLIDES as templateGuide } from './template-guide';
 import { SLIDES as allStylesEn } from './all-styles-en';
 import { SLIDES as allStylesZh } from './all-styles-zh';
+import { SLIDES as allHands2026 } from './all-hands-2026';
 
 export interface DeckConfig {
   id: string;
@@ -24,6 +25,11 @@ export const decks: Record<string, DeckConfig> = {
     id: 'all-styles-zh',
     title: 'Chinese Gallery: All Slide Styles (中文演示)',
     slides: allStylesZh
+  },
+  'all-hands-2026': {
+    id: 'all-hands-2026',
+    title: 'Dify 2026 全员会',
+    slides: allHands2026
   }
 };
 

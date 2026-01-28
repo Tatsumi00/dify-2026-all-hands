@@ -5,7 +5,7 @@ import {
   Users, Target, Code, Cloud, Palette,
   UserCheck, Shield, GitBranch, MessageSquare,
   Zap, Award, Calendar, Lightbulb, Layers, Rocket,
-  Star, Monitor, BarChart3, ArrowRight
+  Star, Monitor, BarChart3, ArrowRight, Sparkles
 } from 'lucide-react';
 
 export const SLIDES: SlideData[] = [
@@ -105,36 +105,38 @@ export const SLIDES: SlideData[] = [
     }
   },
 
-  // 模型军备竞赛
+  // 模型军备竞赛 - 4个关键节点卡片
   {
     id: 6,
-    type: SlideType.SPLIT,
-    title: "模型军备竞赛：2025 关键节点",
+    type: SlideType.CARDS,
+    title: "2025 关键节点",
     subtitle: "四个改变行业的时刻",
-    content: [
-      "**1月** — DeepSeek R1",
-      "$6M 成本达前沿性能，Sputnik moment",
-      "",
-      "**2月** — Claude Code 发布",
-      "AI 编程工具爆发元年",
-      "",
-      "**8月** — GPT-5 发布",
-      "幻觉率降低 45%，多模态成熟",
-      "",
-      "**10月** — Nvidia $5T",
-      "人类历史首个 $5 万亿市值公司"
-    ],
-    visualContent: (
-      <div className="flex flex-col items-center justify-center h-full">
-        <div className="relative">
-          <div className="w-1 h-64 bg-gradient-to-b from-blue-500 via-purple-500 to-orange-500 rounded-full"/>
-          <Calendar size={48} className="absolute -top-6 -left-5 text-blue-500 bg-white rounded-full p-2 shadow-lg"/>
-          <Rocket size={32} className="absolute top-1/4 -right-10 text-purple-500"/>
-          <TrendingUp size={32} className="absolute top-2/3 -right-10 text-orange-500"/>
-        </div>
-        <p className="mt-8 text-lg font-medium text-slate-600">2025 关键里程碑</p>
-      </div>
-    )
+    items: [
+      {
+        title: "1月",
+        description: "**DeepSeek R1**\n$6M 成本达前沿性能\nSputnik moment",
+        icon: <Rocket className="text-blue-600"/>,
+        tags: ["模型"]
+      },
+      {
+        title: "2月",
+        description: "**Claude Code**\nAI 编程工具爆发元年",
+        icon: <Code className="text-purple-600"/>,
+        tags: ["工具"]
+      },
+      {
+        title: "8月",
+        description: "**GPT-5 发布**\n幻觉率降低 45%\n多模态成熟",
+        icon: <Sparkles className="text-green-600"/>,
+        tags: ["模型"]
+      },
+      {
+        title: "10月",
+        description: "**Nvidia $5T**\n人类历史首个\n$5 万亿市值公司",
+        icon: <TrendingUp className="text-orange-600"/>,
+        tags: ["市场"]
+      }
+    ]
   },
 
   // 范式转移信号

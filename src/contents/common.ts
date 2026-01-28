@@ -1,15 +1,15 @@
 
 export const AUTHOR_INFO = {
-  name: "Your Name",
-  title: "Your Job Title",
-  email: "your.email@dify.ai",
-  role: "Your Role",
-  expertise: ["Area 1", "Area 2"],
+  name: "张路宇",
+  title: "CEO & Co-founder",
+  email: "luyu@dify.ai",
+  role: "Chief Executive Officer",
+  expertise: ["AI Platform", "Product Strategy"],
   social: {
-    x: "@your_handle",
-    linkedin: "in/your-profile",
-    github: "YourGitHub",
-    wechat: "your-wechat-id"
+    x: "@daborithm",
+    linkedin: "in/luyu-zhang",
+    github: "takatost",
+    wechat: ""
   }
 };
 
