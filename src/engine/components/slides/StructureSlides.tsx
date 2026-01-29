@@ -160,11 +160,18 @@ export const AdaptiveContentSlide: React.FC<SlideProps> = ({ slide }) => {
     </div>
   );
 };
-export const MatrixSlide: React.FC<SlideProps> = ({ slide }) => (
-  <div className="flex flex-col h-full p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16 relative overflow-hidden">
+export const MatrixSlide: React.FC<SlideProps> = ({ slide }) => {
+  const rowCount = slide.tableData?.rows?.length ?? 0;
+  // If the table is short, don't force a full-height scroll container; it creates a huge empty area inside the bordered box.
+  const useScrollableContainer = rowCount > 4;
+
+  return (
+    <div className="flex flex-col h-full p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16 relative overflow-hidden">
       <BackgroundPattern />
       <SlideHeader title={slide.title} subtitle={slide.subtitle} />
-      <div className="flex-grow min-h-0 overflow-auto shadow-xl border-4 border-gray-100 relative z-10 rounded-lg">
+      <div
+        className={`${useScrollableContainer ? 'flex-grow min-h-0 overflow-auto' : 'flex-shrink-0 overflow-hidden'} shadow-xl border-4 border-gray-100 relative z-10 rounded-lg bg-white`}
+      >
         <table className="w-full text-left border-collapse">
           <thead className="sticky top-0">
             <tr className="bg-gradient-to-r from-dify-blue to-blue-600 border-b-4 border-blue-700">
@@ -195,5 +202,6 @@ export const MatrixSlide: React.FC<SlideProps> = ({ slide }) => (
           </tbody>
         </table>
       </div>
-  </div>
-);
+    </div>
+  );
+};
