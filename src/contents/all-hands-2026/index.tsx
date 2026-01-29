@@ -30,15 +30,10 @@ export const SLIDES: SlideData[] = [
     ],
     visualContent: (
       <div className="flex flex-col items-center justify-center h-full">
-        {/* Professional Executive Avatar */}
         <div className="relative w-64 h-64 mb-8 group">
-          {/* Outer Ring - Animated */}
           <div className="absolute inset-0 rounded-full border-4 border-dify-blue opacity-20 animate-pulse"></div>
           <div className="absolute inset-2 rounded-full border-2 border-dify-blue opacity-40"></div>
-
-          {/* Main Avatar Container */}
           <div className="absolute inset-4 rounded-full bg-gradient-to-br from-dify-blue via-blue-600 to-blue-700 flex items-center justify-center shadow-2xl overflow-hidden">
-            {/* Geometric Pattern Overlay */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-0 left-0 w-full h-full grid grid-cols-8 grid-rows-8">
                 {[...Array(64)].map((_, i) => (
@@ -46,20 +41,14 @@ export const SLIDES: SlideData[] = [
                 ))}
               </div>
             </div>
-
-            {/* Name Display */}
             <div className="relative z-10 text-center">
               <div className="text-7xl text-white font-black tracking-wider mb-2">路宇</div>
               <div className="h-1 w-16 bg-white/60 mx-auto"></div>
             </div>
           </div>
-
-          {/* Decorative Accent Corner Marks */}
           <div className="absolute -top-2 -left-2 w-12 h-12 border-t-4 border-l-4 border-dify-blue opacity-60"></div>
           <div className="absolute -bottom-2 -right-2 w-12 h-12 border-b-4 border-r-4 border-dify-blue opacity-60"></div>
         </div>
-
-        {/* Role Badge */}
         <div className="flex items-center gap-3 bg-gray-50 px-6 py-3 rounded-sm border-2 border-gray-200">
           <div className="w-2 h-2 rounded-full bg-dify-blue animate-pulse"></div>
           <span className="text-sm font-bold text-gray-600 uppercase tracking-widest">Chief Executive Officer</span>
@@ -129,7 +118,6 @@ export const SLIDES: SlideData[] = [
     )
   },
 
-  // 模型军备竞赛 - 4个关键节点卡片
   {
     id: 6,
     type: SlideType.CARDS,
@@ -139,31 +127,30 @@ export const SLIDES: SlideData[] = [
       {
         title: "1月",
         description: "**DeepSeek R1**\n$6M 成本达前沿性能\nSputnik moment",
-        icon: <Rocket className="text-blue-600"/>,
+        icon: <Rocket className="text-dify-blue"/>,
         tags: ["模型"]
       },
       {
         title: "2月",
         description: "**Claude Code**\nAI 编程工具爆发元年",
-        icon: <Code className="text-purple-600"/>,
+        icon: <Code className="text-dify-blue"/>,
         tags: ["工具"]
       },
       {
         title: "8月",
         description: "**GPT-5 发布**\n幻觉率降低 45%\n多模态成熟",
-        icon: <Sparkles className="text-green-600"/>,
+        icon: <Sparkles className="text-dify-blue"/>,
         tags: ["模型"]
       },
       {
         title: "10月",
         description: "**Nvidia $5T**\n人类历史首个\n$5 万亿市值公司",
-        icon: <TrendingUp className="text-orange-600"/>,
+        icon: <TrendingUp className="text-dify-blue"/>,
         tags: ["市场"]
       }
     ]
   },
 
-  // 范式转移信号
   {
     id: 7,
     type: SlideType.CARDS,
@@ -173,22 +160,22 @@ export const SLIDES: SlideData[] = [
       {
         title: "前沿模型民主化",
         description: "DeepSeek 证明小团队也能做前沿模型",
-        icon: <Rocket className="text-blue-500"/>
+        icon: <Rocket className="text-dify-blue"/>
       },
       {
         title: "Vibe Coding 元年",
         description: "AI 辅助编程成为主流工作方式",
-        icon: <Code className="text-purple-500"/>
+        icon: <Code className="text-dify-blue"/>
       },
       {
         title: "百万 Token 标配",
         description: "长上下文能力成为基础能力",
-        icon: <Layers className="text-green-500"/>
+        icon: <Layers className="text-dify-blue"/>
       },
       {
         title: "Agent 成新主流",
         description: "从确定性流程转向自主决策",
-        icon: <Lightbulb className="text-orange-500"/>
+        icon: <Lightbulb className="text-dify-blue"/>
       }
     ]
   },
@@ -443,7 +430,6 @@ export const SLIDES: SlideData[] = [
     }
   },
 
-  // P2-8: 行业竞品信号 (重构为 CARDS)
   {
     id: 18,
     type: SlideType.CARDS,
@@ -453,17 +439,17 @@ export const SLIDES: SlideData[] = [
       {
         title: "ChatGPT Canvas",
         description: "OpenAI 可视化协作界面\n支持实时编辑与迭代",
-        icon: <Monitor className="text-green-500"/>
+        icon: <Monitor className="text-dify-blue"/>
       },
       {
         title: "Claude Artifacts",
         description: "Anthropic 交互式内容生成\n代码、文档即时呈现",
-        icon: <Monitor className="text-purple-500"/>
+        icon: <Monitor className="text-dify-blue"/>
       },
       {
         title: "Cursor Composer",
         description: "AI 编程工具画布化\n多文件协同编辑",
-        icon: <Monitor className="text-blue-500"/>
+        icon: <Monitor className="text-dify-blue"/>
       }
     ],
     bottomBanner: {
@@ -485,7 +471,6 @@ export const SLIDES: SlideData[] = [
     ]
   },
 
-  // P0-4: 投入级别 Slide
   {
     id: 20,
     type: SlideType.CARDS,
@@ -495,17 +480,17 @@ export const SLIDES: SlideData[] = [
       {
         title: "CEO 亲自带队",
         description: "公司最高优先级\n路宇亲自负责产品方向",
-        icon: <Star className="text-yellow-500"/>
+        icon: <Star className="text-dify-blue"/>
       },
       {
         title: "独立团队",
         description: "不受主仓迭代节奏影响\n独立招聘、独立决策",
-        icon: <Users className="text-blue-500"/>
+        icon: <Users className="text-dify-blue"/>
       },
       {
         title: "快速迭代",
         description: "小步快跑，抢占窗口期\n两周一个版本",
-        icon: <Zap className="text-orange-500"/>
+        icon: <Zap className="text-dify-blue"/>
       }
     ]
   },
@@ -519,7 +504,6 @@ export const SLIDES: SlideData[] = [
     footer: "第三部分"
   },
 
-  // 为什么引入 DRI
   {
     id: 22,
     type: SlideType.CARDS,
@@ -529,22 +513,21 @@ export const SLIDES: SlideData[] = [
       {
         title: "议而不决",
         description: "一群人讨论一下午，没人拍板",
-        icon: <MessageSquare className="text-blue-500" />
+        icon: <MessageSquare className="text-dify-blue" />
       },
       {
         title: "执行推诿",
         description: "产品怪研发，研发怪测试，测试怪需求不明确",
-        icon: <GitBranch className="text-purple-500" />
+        icon: <GitBranch className="text-dify-blue" />
       },
       {
         title: "无成本干扰",
         description: "旁观者随意指手画脚，方案被迫平庸化",
-        icon: <AlertTriangle className="text-orange-500" />
+        icon: <AlertTriangle className="text-dify-blue" />
       }
     ]
   },
 
-  // 什么是 DRI
   {
     id: 23,
     type: SlideType.SPLIT,
@@ -563,10 +546,24 @@ export const SLIDES: SlideData[] = [
     ],
     visualContent: (
       <div className="flex flex-col items-center justify-center h-full">
-        <div className="bg-dify-blue text-white rounded-xl p-8 text-center">
-          <UserCheck size={64} className="mx-auto mb-4"/>
-          <p className="text-2xl font-bold">有且仅有一人</p>
-          <p className="text-lg mt-2 opacity-80">对最终结果负责</p>
+        <div className="relative">
+          <div className="absolute inset-0 bg-dify-blue/20 rounded-2xl blur-xl transform scale-110"></div>
+          <div className="relative bg-gradient-to-br from-dify-blue to-blue-700 text-white rounded-2xl p-10 text-center shadow-2xl">
+            <div className="absolute -top-4 -right-4 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg">
+              <span className="text-dify-blue font-black text-lg">1</span>
+            </div>
+            <UserCheck size={72} className="mx-auto mb-6"/>
+            <p className="text-3xl font-black tracking-tight">有且仅有一人</p>
+            <div className="w-16 h-1 bg-white/40 mx-auto my-4 rounded-full"></div>
+            <p className="text-xl opacity-90">对最终结果负责</p>
+          </div>
+        </div>
+        <div className="mt-8 flex gap-4">
+          <div className="bg-gray-100 px-4 py-2 rounded-lg text-sm font-medium text-gray-600">Apple</div>
+          <ArrowRight className="text-gray-400" />
+          <div className="bg-gray-100 px-4 py-2 rounded-lg text-sm font-medium text-gray-600">GitLab</div>
+          <ArrowRight className="text-gray-400" />
+          <div className="bg-dify-blue px-4 py-2 rounded-lg text-sm font-bold text-white">Dify</div>
         </div>
       </div>
     )
@@ -593,7 +590,6 @@ export const SLIDES: SlideData[] = [
     }
   },
 
-  // 负责的定义
   {
     id: 25,
     type: SlideType.CARDS,
@@ -603,17 +599,17 @@ export const SLIDES: SlideData[] = [
       {
         title: "Ownership",
         description: "你可以决定怎么做",
-        icon: <Target className="text-blue-500"/>
+        icon: <Target className="text-dify-blue"/>
       },
       {
         title: "Accountability",
         description: "出问题时你来主持解决",
-        icon: <Shield className="text-green-500"/>
+        icon: <Shield className="text-dify-blue"/>
       },
       {
         title: "Improvement",
         description: "失败后你组织复盘",
-        icon: <GitBranch className="text-purple-500"/>
+        icon: <GitBranch className="text-dify-blue"/>
       }
     ],
     bottomBanner: {
@@ -622,7 +618,6 @@ export const SLIDES: SlideData[] = [
     }
   },
 
-  // DRI 三大原则
   {
     id: 26,
     type: SlideType.ACCORDION,
@@ -631,17 +626,17 @@ export const SLIDES: SlideData[] = [
       {
         title: "原则一：有权力才有责任",
         description: "DRI 要为最终结果负责，必须拥有最终决策权。如果你不承担失败的后果，你就没资格在决策书上签字。",
-        icon: <Zap className="text-yellow-500"/>
+        icon: <Zap className="text-dify-blue"/>
       },
       {
         title: "原则二：广泛听取，独立决策",
         description: "过程是民主的（收集信息和建议），决策是独裁的（DRI 一人拍板）。",
-        icon: <MessageSquare className="text-blue-500"/>
+        icon: <MessageSquare className="text-dify-blue"/>
       },
       {
         title: "原则三：Disagree and Commit",
         description: "一旦 DRI 做出决定，即使持保留意见，也必须全力支持执行。严禁消极怠工和事后诸葛亮。",
-        icon: <CheckCircle className="text-green-500"/>
+        icon: <CheckCircle className="text-dify-blue"/>
       }
     ]
   },
@@ -662,7 +657,6 @@ export const SLIDES: SlideData[] = [
     }
   },
 
-  // 对员工和主管的要求
   {
     id: 28,
     type: SlideType.SPLIT,
@@ -680,19 +674,48 @@ export const SLIDES: SlideData[] = [
       "  3. 给多少资源？"
     ],
     visualContent: (
-      <div className="flex flex-col gap-4 h-full justify-center">
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <Users size={24} className="text-blue-500 mb-2"/>
-          <p className="font-medium text-slate-700">员工</p>
-          <p className="text-sm text-slate-500">承担责任 → 获得权力</p>
+      <div className="flex flex-col gap-6 h-full justify-center px-4">
+        <div className="relative">
+          <div className="absolute -left-3 top-0 bottom-0 w-1 bg-gradient-to-b from-dify-blue to-blue-300 rounded-full"></div>
+          <div className="bg-gradient-to-r from-blue-50 to-white border border-blue-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex items-center gap-4 mb-3">
+              <div className="w-12 h-12 bg-dify-blue rounded-xl flex items-center justify-center shadow-lg">
+                <Users size={24} className="text-white"/>
+              </div>
+              <div>
+                <p className="font-bold text-slate-800 text-xl">员工</p>
+                <p className="text-sm text-dify-blue font-medium">承担责任 → 获得权力</p>
+              </div>
+            </div>
+            <p className="text-slate-600 text-sm pl-16">衡量标准：为多少事情的最终结果负责</p>
+          </div>
         </div>
-        <div className="text-center text-2xl text-slate-400">
-          <ArrowRight className="mx-auto rotate-90"/>
+        
+        <div className="flex justify-center">
+          <div className="flex items-center gap-2 text-slate-400">
+            <div className="w-8 h-px bg-slate-300"></div>
+            <ArrowRight className="rotate-90" size={20}/>
+            <div className="w-8 h-px bg-slate-300"></div>
+          </div>
         </div>
-        <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-          <Award size={24} className="text-purple-500 mb-2"/>
-          <p className="font-medium text-slate-700">主管</p>
-          <p className="text-sm text-slate-500">放权 → 定目标、选人、给资源</p>
+        
+        <div className="relative">
+          <div className="absolute -left-3 top-0 bottom-0 w-1 bg-gradient-to-b from-indigo-500 to-purple-300 rounded-full"></div>
+          <div className="bg-gradient-to-r from-indigo-50 to-white border border-indigo-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex items-center gap-4 mb-3">
+              <div className="w-12 h-12 bg-indigo-500 rounded-xl flex items-center justify-center shadow-lg">
+                <Award size={24} className="text-white"/>
+              </div>
+              <div>
+                <p className="font-bold text-slate-800 text-xl">主管</p>
+                <p className="text-sm text-indigo-600 font-medium">放权 → 给 Context 不给 Control</p>
+              </div>
+            </div>
+            <div className="pl-16 space-y-1">
+              <p className="text-slate-600 text-sm">只决定三件事：</p>
+              <p className="text-slate-500 text-xs">投不投？谁来干？给多少资源？</p>
+            </div>
+          </div>
         </div>
       </div>
     )
@@ -719,7 +742,6 @@ export const SLIDES: SlideData[] = [
     footer: "第四部分"
   },
 
-  // P2-9: 核心信息 (重构为 CARDS)
   {
     id: 31,
     type: SlideType.CARDS,
@@ -729,17 +751,17 @@ export const SLIDES: SlideData[] = [
       {
         title: "外部环境变",
         description: "模型军备竞赛\n范式转移",
-        icon: <TrendingUp className="text-blue-500"/>
+        icon: <TrendingUp className="text-dify-blue"/>
       },
       {
         title: "产品战略变",
         description: "三条产品线\n各有定位",
-        icon: <Layers className="text-purple-500"/>
+        icon: <Layers className="text-dify-blue"/>
       },
       {
         title: "组织架构变",
         description: "DRI 制度\n权责清晰",
-        icon: <Users className="text-orange-500"/>
+        icon: <Users className="text-dify-blue"/>
       }
     ]
   },
