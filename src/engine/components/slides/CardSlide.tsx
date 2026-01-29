@@ -10,51 +10,37 @@ interface CardSlideProps {
 const renderDescription = (text: string, tagColorClass: string) => {
   if (!text) return null;
   
-  // STRICT COLOR ENFORCEMENT:
-  // Only allow theme colors (blue), black, or white/gray scales.
-  // We interpret "Theme Blue" as Dify Blue (#0033FF / Pantone Blue).
-  // Green/Purple/Orange are NOT allowed for text.
-  // Icons and Tags are EXEMPT from this rule (per previous instruction).
-  
+  // STRICT COLOR ENFORCEMENT: Neutral/Blue only
   const strictHighlightColor = 'text-dify-blue';
 
   return text.split('\n').map((line, idx) => {
     const trimmed = line.trim();
-    if (!trimmed) return <div key={idx} className="h-2"></div>; // Spacer for empty lines
+    if (!trimmed) return <div key={idx} className="h-2"></div>;
 
     const isBullet = trimmed.startsWith('- ');
     const content = isBullet ? trimmed.substring(2) : trimmed;
 
-    // Parse **bold**
     const parts = content.split(/(\*\*.*?\*\*)/g);
     const parsedContent = parts.map((part, pIdx) => {
         if (part.startsWith('**') && part.endsWith('**')) {
             const text = part.slice(2, -2);
-            // Highlight style for Who/What headers
             if (text === 'Who' || text === 'What') {
-                 // HEADER: Enforce Blue
-                 return <span key={pIdx} className={`font-extrabold ${strictHighlightColor} text-lg block mb-1 uppercase tracking-wider`}>{text}</span>;
+                 return <span key={pIdx} className={`font-extrabold ${strictHighlightColor} text-xs sm:text-sm block mb-1 uppercase tracking-wider`}>{text}</span>;
             }
-            // BODY BOLD: Enforce Blue
             return <strong key={pIdx} className={`font-bold ${strictHighlightColor}`}>{text}</strong>;
         }
-        // Enforce all text parts to follow the rule if not strictHighlight (which is blue)
-        // Regular text is Gray-600 (Neutral)
         return <span key={pIdx} className="text-gray-600">{part}</span>;
     });
 
     if (isBullet) {
         return (
             <div key={idx} className="flex items-start gap-2 mb-1">
-                {/* Bullet: Enforce Blue */}
                 <span className={`mt-2 w-1.5 h-1.5 rounded-full opacity-60 flex-shrink-0 bg-blue-600`}></span>
-                {/* Content: Enforce Gray/Black (gray-600 is a soft black) */}
                 <span className="text-sm sm:text-base text-gray-600 leading-relaxed">{parsedContent}</span>
             </div>
         );
     }
 
-    // Standard line (non-bullet): Enforce Gray/Black
     return (
         <div key={idx} className="mb-1 text-sm sm:text-base text-gray-600 leading-relaxed">
             {parsedContent}
@@ -63,134 +49,65 @@ const renderDescription = (text: string, tagColorClass: string) => {
   });
 };
 
-const CardItem: React.FC<{ item: any, widthClass?: string, style?: React.CSSProperties }> = ({ item, widthClass = "", style }) => {
+const CardItem: React.FC<{ item: any, style?: React.CSSProperties }> = ({ item, style }) => {
   const [imgError, setImgError] = React.useState(false);
 
-  const tag = item.tags?.[0];
+  // Simplified Tag Styles - Dify Blue / Neutral only
+  const tagColor = 'bg-blue-50 text-dify-blue border-blue-100';
   
-  // Icons and Tags use their original semantic colors (EXEMPT from strict text rule)
-  // Define available styles
-  const TAG_STYLES = [
-    'bg-blue-50 text-blue-700 border-blue-100',   // 0: Blue
-    'bg-green-50 text-green-700 border-green-100', // 1: Green
-    'bg-purple-50 text-purple-700 border-purple-100', // 2: Purple
-    'bg-orange-50 text-orange-700 border-orange-100', // 3: Orange
-    'bg-indigo-50 text-indigo-700 border-indigo-100', // 4: Indigo
-    'bg-cyan-50 text-cyan-700 border-cyan-100',     // 5: Cyan
-  ];
-
-  let tagColor = 'bg-gray-50 text-gray-600 border-gray-200';
-
-  if (tag) {
-     // Dynamic color assignment based on string hash
-     let hash = 0;
-     for (let i = 0; i < tag.length; i++) {
-       hash = tag.charCodeAt(i) + ((hash << 5) - hash);
-     }
-     const index = Math.abs(hash) % TAG_STYLES.length;
-     tagColor = TAG_STYLES[index];
-     
-     // Specific overrides for semantic consistency if needed (optional)
-     // Currently purely dynamic to support internationalization
-  }
-  
-  // Check for Logo (Image) vs Icon (Component)
   const hasLogo = !!item.logo && !imgError;
 
-  // Custom styling for specific card types
-  let cardStyle = "bg-white border-gray-200";
-  let iconBg = "bg-gray-50 group-hover:bg-white border-gray-100";
-  
-  // TEXT COLOR ENFORCEMENT:
-  // Titles must be Black (gray-900).
-  // Descriptions must be Gray (gray-500/600).
-  // No other text colors allowed.
-
+  let cardStyle = "bg-white border-gray-200 hover:border-dify-blue hover:shadow-md";
+  let iconBg = "bg-gray-50 group-hover:bg-blue-50 border-gray-100 text-dify-blue";
   let titleColor = "text-gray-900";
-  let descStyle = "text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed"; 
   
-  // ICON FIX: Allow icon dimension customization - Enlarged for better visibility and consistency
-  let iconDim = "w-20 h-20 sm:w-24 sm:h-24"; 
-
   // Special Cards override
   if (item.title === "CORE POSITIONING" || item.title === "核心定位") {
-      cardStyle = "bg-blue-600 border-blue-600 shadow-blue-200"; // Blue Background
-      iconBg = "bg-white/20 text-white border-white/30 backdrop-blur-sm"; // White Icon on Blue
-      titleColor = "text-white"; // White Text
-      descStyle = "text-blue-50 text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight";
+      cardStyle = "bg-dify-blue border-dify-blue shadow-lg"; 
+      iconBg = "bg-white/10 text-white border-white/20 backdrop-blur-sm";
+      titleColor = "text-white";
   } else if (item.title === "VALUE" || item.title === "核心价值") {
-      // Let's make it Neutral Gray with Blue accent
-      cardStyle = "bg-gray-50 border-gray-200 shadow-gray-100";
-      iconBg = "bg-white border-gray-300 text-dify-blue";
+      cardStyle = "bg-gray-50 border-gray-200";
+      iconBg = "bg-white border-gray-200 text-dify-blue";
       titleColor = "text-gray-900";
-      descStyle = "text-gray-700 text-lg sm:text-xl md:text-2xl font-bold leading-snug";
-  } else {
-      // For standard cards, enforce borders/shadows but keep text strictly Black
-      // We check tag to apply hover border color
-      if (tag) {
-           // Extract base color name from tagColor class for hover effect logic is tricky with dynamic classes
-           // So we use a generic blue hover for all standard cards to match "Dify Theme"
-           cardStyle = "bg-white border-gray-200 hover:border-blue-300 hover:shadow-blue-100/50";
-           
-           // But if we really want to match the tag color...
-           if (tagColor.includes('blue')) {
-               cardStyle = "bg-white border-blue-100 hover:border-blue-300 hover:shadow-blue-100/50";
-               iconBg = "bg-blue-50 group-hover:bg-blue-100 border-blue-100 text-dify-blue";
-           } else if (tagColor.includes('green')) {
-               cardStyle = "bg-white border-green-100 hover:border-green-300 hover:shadow-green-100/50";
-               iconBg = "bg-green-50 group-hover:bg-green-100 border-green-100 text-green-600";
-           } else if (tagColor.includes('purple')) {
-               cardStyle = "bg-white border-purple-100 hover:border-purple-300 hover:shadow-purple-100/50";
-               iconBg = "bg-purple-50 group-hover:bg-purple-100 border-purple-100 text-purple-600";
-           } else if (tagColor.includes('orange')) {
-               cardStyle = "bg-white border-orange-100 hover:border-orange-300 hover:shadow-orange-100/50";
-               iconBg = "bg-orange-50 group-hover:bg-orange-100 border-orange-100 text-orange-600";
-           } else if (tagColor.includes('indigo')) {
-               cardStyle = "bg-white border-indigo-100 hover:border-indigo-300 hover:shadow-indigo-100/50";
-               iconBg = "bg-indigo-50 group-hover:bg-indigo-100 border-indigo-100 text-indigo-600";
-           }
-      }
   }
 
   return (
-       <div className={`${cardStyle} rounded-sm border p-5 sm:p-6 md:p-8 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-row items-center gap-5 sm:gap-6 md:gap-8 h-full relative overflow-hidden group ${widthClass} opacity-0 animate-fade-in-up`} style={style}>
-           {/* Tags - Moved to Top Right */}
-           {item.tags && (
-             <div className="absolute top-4 right-4 flex flex-col items-end gap-1 z-20">
-               {item.tags.map((tag: string, tIdx: number) => (
-                 <span key={tIdx} className={`px-2 sm:px-3 py-1 rounded-sm text-[10px] sm:text-xs uppercase font-bold tracking-wider border ${tagColor}`}>
-                   {tag}
-                 </span>
-               ))}
-             </div>
-           )}
-
-           {/* Icon/Logo Box - Larger for better visibility */}
-           <div className={`w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-sm flex items-center justify-center border-2 transition-all duration-300 flex-shrink-0 shadow-sm group-hover:shadow-md ${iconBg}`}>
-               {hasLogo ? (
-                  <img
-                      src={item.logo}
-                      alt={item.title}
-                      className="max-w-[65%] max-h-[65%] object-contain"
-                      onError={() => setImgError(true)}
-                  />
-               ) : (
-                  React.isValidElement(item.icon) ? React.cloneElement(item.icon as React.ReactElement<any>, {
-                    size: undefined,
-                    className: `w-3/5 h-3/5 ${(item.icon as React.ReactElement<any>).props.className || ''}`
-                  }) : null
-               )}
+       <div className={`${cardStyle} rounded-sm border p-6 shadow-sm transition-all duration-300 flex flex-col items-start gap-6 h-full relative overflow-hidden group opacity-0 animate-fade-in-up`} style={style}>
+           <div className="flex w-full justify-between items-start">
+               <div className={`w-14 h-14 rounded-sm flex items-center justify-center border transition-colors duration-300 flex-shrink-0 ${iconBg}`}>
+                   {hasLogo ? (
+                      <img
+                          src={item.logo}
+                          alt={item.title}
+                          className="max-w-[70%] max-h-[70%] object-contain"
+                          onError={() => setImgError(true)}
+                      />
+                   ) : (
+                      React.isValidElement(item.icon) ? React.cloneElement(item.icon as React.ReactElement<any>, {
+                        size: undefined,
+                        className: `w-7 h-7 ${(item.icon as React.ReactElement<any>).props.className || ''}`
+                      }) : null
+                   )}
+               </div>
+               
+                {item.tags && (
+                  <div className="flex flex-col items-end gap-1">
+                    {item.tags.map((tag: string, tIdx: number) => (
+                      <span key={tIdx} className={`px-2 py-0.5 rounded-sm text-[10px] uppercase font-bold tracking-wider border ${tagColor}`}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
            </div>
 
-           {/* Content - Title + Description */}
-           <div className="flex-1 min-w-0 pr-14">
-               {/* Title */}
-               <div className={`text-xl sm:text-2xl md:text-3xl font-extrabold ${titleColor} mb-2 sm:mb-3 leading-tight whitespace-pre-line tracking-tight`}>
+           <div className="w-full flex-1">
+               <div className={`text-lg sm:text-xl font-bold ${titleColor} mb-3 leading-snug`}>
                   {item.title}
                </div>
 
-               {/* Desc with Markdown Parsing */}
-               <div className="text-base sm:text-lg md:text-xl">
+               <div className="text-sm sm:text-base">
                   {renderDescription(item.description, tagColor)}
                </div>
            </div>
@@ -205,43 +122,30 @@ export const CardSlide: React.FC<CardSlideProps> = ({ slide }) => {
 
     if (!items && !simpleItems) return null;
     
+    // Unified Grid Logic
+    // Always use Grid. 3 cols for most cases on LG.
+    // 4 items -> 2 cols on MD/LG (2x2) is cleaner than 3+1.
+    // 3 items -> 3 cols.
+    // 5 items -> 3 cols (3, 2).
+    
     const count = items ? items.length : (simpleItems ? simpleItems.length : 0);
+    let gridClass = "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
     
-    // FIX: Include count === 7 for proper centering layout logic
-    const useFlexForCentering = count === 5 || count === 3 || count === 7; 
-    
-    let gridCols = 'grid-cols-3'; 
-    if (count === 8) gridCols = 'grid-cols-4';
-    else if (count === 4) gridCols = 'grid-cols-2';
-    
-    if (items) {
-      if (useFlexForCentering) {
-          return (
-              // FIX: Removed 'h-full' and 'content-start' to prevent stretching cards vertically to full container height
-              // This allows cards to wrap naturally based on content size and container width
-              <div className={`flex flex-wrap justify-center content-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 w-full min-h-full p-4`}>
-                  {items.map((item, idx) => (
-                      <CardItem
-                        key={idx}
-                        item={item}
-                        // FIX: Adjusted width for different breakpoints to ensure 3 per row (roughly 30%) or 2 per row on smaller screens
-                        widthClass="w-full sm:w-[calc(50%-0.75rem)] md:w-[calc(33.333%-1rem)] lg:w-[30%] min-w-[280px]"
-                        style={{ animationDelay: `${Math.min(idx * 100, 500)}ms` }}
-                      />
-                  ))}
-              </div>
-          );
-      }
+    if (count === 2 || count === 4) {
+        gridClass = "grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 max-w-5xl mx-auto";
+    } else if (count >= 6) {
+        gridClass = "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"; // Keep 3 cols for density
+    }
 
+    if (items) {
       return (
-        <div className={`grid grid-cols-1 sm:grid-cols-2 ${count === 8 ? 'md:grid-cols-3 lg:grid-cols-4' : count === 4 ? 'md:grid-cols-2' : 'md:grid-cols-3'} gap-4 sm:gap-5 md:gap-6 lg:gap-8 w-full h-full`}>
+        <div className={`grid ${gridClass} gap-6 w-full auto-rows-fr`}>
           {items.map((item, idx) => (
-             <div key={idx} className="min-h-0 h-full">
-                <CardItem
-                  item={item}
-                  style={{ animationDelay: `${idx * 100}ms` }}
-                />
-             </div>
+             <CardItem
+               key={idx}
+               item={item}
+               style={{ animationDelay: `${idx * 100}ms` }}
+             />
           ))}
         </div>
       );
@@ -249,7 +153,7 @@ export const CardSlide: React.FC<CardSlideProps> = ({ slide }) => {
     
     // Fallback for simple string[] content
     return (
-      <div className={`grid ${simpleItems!.length > 6 ? 'grid-cols-3' : 'grid-cols-2'} gap-6 w-full`}>
+      <div className={`grid ${simpleItems!.length > 6 ? 'grid-cols-3' : 'grid-cols-2'} gap-6 w-full auto-rows-fr`}>
         {simpleItems!.map((item, idx) => {
           const [title, ...descParts] = item.split(':');
           const description = descParts.join(':');
@@ -257,11 +161,11 @@ export const CardSlide: React.FC<CardSlideProps> = ({ slide }) => {
           return (
             <div 
               key={idx} 
-              className={`bg-white p-8 rounded-sm border border-gray-200 shadow-sm hover:border-dify-blue hover:shadow-md hover:-translate-y-1 transition-all duration-300 group opacity-0 animate-fade-in-up`}
+              className={`bg-white p-6 rounded-sm border border-gray-200 shadow-sm hover:border-dify-blue hover:shadow-md transition-all duration-300 group opacity-0 animate-fade-in-up h-full flex flex-col`}
               style={{ animationDelay: `${idx * 100}ms` }}
             >
-              <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-dify-blue transition-colors">{title}</h3>
-              {description && <p className="text-gray-600 text-xl leading-relaxed">{description}</p>}
+              <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-dify-blue transition-colors">{title}</h3>
+              {description && <p className="text-gray-600 text-base leading-relaxed flex-1">{description}</p>}
             </div>
           );
         })}
@@ -270,10 +174,10 @@ export const CardSlide: React.FC<CardSlideProps> = ({ slide }) => {
   };
 
   return (
-    <div className="flex flex-col h-full p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16 2xl:p-20 relative overflow-hidden">
+    <div className="flex flex-col h-full p-6 sm:p-8 md:p-10 lg:p-14 xl:p-16 relative overflow-hidden">
        <BackgroundPattern />
        <SlideHeader title={slide.title} subtitle={slide.subtitle} />
-       <div className="flex-grow min-h-0 relative z-10 overflow-y-auto">
+       <div className="flex-grow min-h-0 relative z-10 overflow-y-auto pr-2">
          {renderCards()}
        </div>
     </div>

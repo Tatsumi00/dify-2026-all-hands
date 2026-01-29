@@ -114,15 +114,17 @@ export const SimpleBullets = ({ items }: { items?: string[] }) => {
 
 export const SplitSlide: React.FC<SlideProps> = ({ slide }) => {
   return (
-    <div className="flex flex-col h-full p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16 2xl:p-20 relative overflow-hidden">
+    <div className="flex flex-col h-full p-6 sm:p-8 md:p-10 lg:p-14 xl:p-16 relative overflow-hidden">
       <BackgroundPattern />
       <SlideHeader title={slide.title} subtitle={slide.subtitle} />
-      <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-16 flex-1 items-center justify-center relative z-10 min-h-0">
-          <div className={`w-full ${slide.visualContent ? 'lg:w-1/2' : 'lg:w-3/4 mx-auto'} flex flex-col justify-center pt-2 min-h-0 overflow-auto h-full`}>
-             <SimpleBullets items={slide.content} />
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-20 flex-1 items-center justify-center relative z-10 min-h-0">
+          <div className={`w-full ${slide.visualContent ? 'lg:w-[60%]' : 'lg:w-3/4 mx-auto'} flex flex-col justify-center pt-2 min-h-0 overflow-auto h-full`}>
+             <div className="max-w-prose">
+                <SimpleBullets items={slide.content} />
+             </div>
           </div>
           {slide.visualContent && (
-          <div className="w-full lg:w-1/2 h-full min-h-0 bg-white border border-gray-200 flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-12 relative overflow-hidden opacity-0 animate-scale-up" style={{ animationDelay: '300ms' }}>
+          <div className="w-full lg:w-[40%] h-full min-h-0 bg-white border border-gray-100 shadow-sm flex items-center justify-center p-6 sm:p-8 relative overflow-hidden opacity-0 animate-scale-up rounded-sm" style={{ animationDelay: '300ms' }}>
              <div className="relative z-10 w-full h-full flex items-center justify-center">
                {slide.visualContent}
              </div>
@@ -166,17 +168,17 @@ export const MatrixSlide: React.FC<SlideProps> = ({ slide }) => {
   const useScrollableContainer = rowCount > 4;
 
   return (
-    <div className="flex flex-col h-full p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16 relative overflow-hidden">
+    <div className="flex flex-col h-full p-6 sm:p-8 md:p-10 lg:p-14 xl:p-16 relative overflow-hidden">
       <BackgroundPattern />
       <SlideHeader title={slide.title} subtitle={slide.subtitle} />
       <div
-        className={`${useScrollableContainer ? 'flex-grow min-h-0 overflow-auto' : 'flex-shrink-0 overflow-hidden'} shadow-xl border-4 border-gray-100 relative z-10 rounded-lg bg-white`}
+        className={`${useScrollableContainer ? 'flex-grow min-h-0 overflow-auto' : 'flex-shrink-0 overflow-hidden'} shadow-lg border-2 border-gray-100 relative z-10 rounded-lg bg-white`}
       >
         <table className="w-full text-left border-collapse">
-          <thead className="sticky top-0">
-            <tr className="bg-gradient-to-r from-dify-blue to-blue-600 border-b-4 border-blue-700">
+          <thead className="sticky top-0 z-20 shadow-sm">
+            <tr className="bg-dify-blue border-b-2 border-blue-800">
               {slide.tableData?.headers.map((h, i) => (
-                <th key={i} className="p-5 sm:p-7 font-extrabold text-base sm:text-lg uppercase tracking-widest text-white first:rounded-tl-lg last:rounded-tr-lg">
+                <th key={i} className="p-5 sm:p-6 font-extrabold text-sm sm:text-base uppercase tracking-widest text-white first:pl-8">
                   {h}
                 </th>
               ))}
@@ -186,14 +188,12 @@ export const MatrixSlide: React.FC<SlideProps> = ({ slide }) => {
             {slide.tableData?.rows.map((row, rIdx) => (
               <tr
                 key={rIdx}
-                className={`border-b-2 border-gray-100 transition-all duration-200 ${
-                  rIdx % 2 === 0 ? 'bg-white hover:bg-blue-50' : 'bg-gray-50 hover:bg-blue-50'
-                }`}
+                className={`border-b border-gray-100 transition-all duration-200 ${rIdx % 2 === 0 ? 'bg-white hover:bg-blue-50' : 'bg-gray-50 hover:bg-blue-50'}`}
               >
                 {row.map((cell, cIdx) => (
-                  <td key={cIdx} className="p-5 sm:p-7 text-lg sm:text-xl text-gray-800 leading-relaxed font-normal">
-                    {cell === '✅' ? <div className="text-green-600 font-bold flex items-center gap-2"><Check size={24} className="stroke-[3]"/> 是</div> :
-                     cell === '✖️' ? <div className="text-gray-400 flex items-center gap-2"><X size={24}/> 否</div> :
+                  <td key={cIdx} className="p-5 sm:p-6 text-lg sm:text-xl text-gray-800 leading-relaxed font-normal align-top first:pl-8">
+                    {cell === '✅' ? <div className="text-dify-blue font-bold flex items-center gap-2"><Check size={20} className="stroke-[3]"/> 是</div> :
+                     cell === '✖️' ? <div className="text-gray-400 flex items-center gap-2"><X size={20}/> 否</div> :
                      parseText(cell)}
                   </td>
                 ))}

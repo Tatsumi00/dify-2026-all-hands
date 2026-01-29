@@ -91,25 +91,25 @@ export const SLIDES: SlideData[] = [
     ],
     visualContent: (
       <div className="flex flex-col justify-center h-full">
-        <div className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200 rounded-xl p-8">
-          <h3 className="text-2xl font-bold text-red-600 mb-6 flex items-center gap-3">
-            <AlertTriangle size={28} /> 需要改进的
+        <div className="bg-gray-50 border-2 border-gray-100 rounded-xl p-8">
+          <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+            <AlertTriangle size={28} className="text-gray-400" /> 需要改进的
           </h3>
-          <ul className="space-y-4 text-lg text-slate-700">
+          <ul className="space-y-4 text-lg text-gray-600">
             <li className="flex items-start gap-3">
-              <span className="text-red-500 font-bold">×</span>
+              <span className="text-gray-400 font-bold">×</span>
               <span><strong>产品工程太慢</strong> — 迭代速度跟不上市场</span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="text-red-500 font-bold">×</span>
+              <span className="text-gray-400 font-bold">×</span>
               <span><strong>市场洞察力不够</strong> — 对用户需求理解不深</span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="text-red-500 font-bold">×</span>
+              <span className="text-gray-400 font-bold">×</span>
               <span><strong>决策速度慢</strong> — 情报消化、小项目制运转不够</span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="text-red-500 font-bold">×</span>
+              <span className="text-gray-400 font-bold">×</span>
               <span><strong>组织效率低</strong> — 仍停留在古典大规模分工阶段</span>
             </li>
           </ul>
@@ -212,11 +212,11 @@ export const SLIDES: SlideData[] = [
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center gap-8">
               <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded-full bg-red-500"></div>
+                <div className="w-4 h-4 rounded-full bg-gray-400"></div>
                 <span className="text-sm font-medium text-slate-600">RAG</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded-full bg-green-500"></div>
+                <div className="w-4 h-4 rounded-full bg-blue-500"></div>
                 <span className="text-sm font-medium text-slate-600">AI Agent</span>
               </div>
               <div className="flex items-center gap-2">
@@ -229,11 +229,11 @@ export const SLIDES: SlideData[] = [
           <div className="flex items-end justify-center gap-12 mb-8">
             <div className="text-center group">
               <div className="relative">
-                <div className="h-28 w-28 bg-gradient-to-t from-red-200 to-red-100 rounded-xl flex flex-col items-center justify-center border-2 border-red-300 shadow-lg group-hover:shadow-xl transition-shadow">
-                  <TrendingDown size={32} className="text-red-500 mb-1"/>
-                  <span className="text-3xl font-black text-red-600">-40%</span>
+                <div className="h-28 w-28 bg-gray-100 rounded-xl flex flex-col items-center justify-center border-2 border-gray-200 shadow-lg group-hover:shadow-xl transition-shadow">
+                  <TrendingDown size={32} className="text-gray-400 mb-1"/>
+                  <span className="text-3xl font-black text-gray-500">-40%</span>
                 </div>
-                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-red-300"></div>
+                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-gray-300"></div>
               </div>
               <p className="text-lg text-slate-700 mt-6 font-bold">RAG</p>
               <p className="text-xs text-slate-400 mt-1">传统检索增强</p>
@@ -241,11 +241,11 @@ export const SLIDES: SlideData[] = [
             
             <div className="text-center group">
               <div className="relative">
-                <div className="h-48 w-28 bg-gradient-to-t from-green-300 to-green-100 rounded-xl flex flex-col items-center justify-center border-2 border-green-400 shadow-lg group-hover:shadow-xl transition-shadow">
-                  <TrendingUp size={40} className="text-green-600 mb-2"/>
-                  <span className="text-4xl font-black text-green-700">+120%</span>
+                <div className="h-48 w-28 bg-blue-50 rounded-xl flex flex-col items-center justify-center border-2 border-blue-200 shadow-lg group-hover:shadow-xl transition-shadow">
+                  <TrendingUp size={40} className="text-blue-600 mb-2"/>
+                  <span className="text-4xl font-black text-blue-700">+120%</span>
                 </div>
-                <div className="absolute -top-3 right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">HOT</div>
+                <div className="absolute -top-3 right-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full">HOT</div>
               </div>
               <p className="text-lg text-slate-700 mt-6 font-bold">AI Agent</p>
               <p className="text-xs text-slate-400 mt-1">自主决策</p>
@@ -287,13 +287,13 @@ export const SLIDES: SlideData[] = [
     ],
     visualContent: (
       <div className="flex items-center justify-center h-full">
-        <div className="bg-amber-50 border-2 border-amber-200 rounded-xl p-8 text-center max-w-md">
-          <AlertTriangle size={48} className="mx-auto text-amber-500 mb-4"/>
+        <div className="bg-gray-50 border-2 border-gray-100 rounded-xl p-8 text-center max-w-md">
+          <AlertTriangle size={48} className="mx-auto text-dify-blue mb-4"/>
           <p className="text-lg font-medium text-slate-700">
-            这是一个<span className="text-green-600">合格的业务</span>
+            这是一个<span className="text-gray-900 font-bold">合格的业务</span>
           </p>
           <p className="text-lg font-medium text-slate-700 mt-2">
-            但不是一个与当前机会体量匹配的<span className="text-amber-600">兴奋的业务</span>
+            但不是一个与当前机会体量匹配的<span className="text-dify-blue font-bold">兴奋的业务</span>
           </p>
         </div>
       </div>
