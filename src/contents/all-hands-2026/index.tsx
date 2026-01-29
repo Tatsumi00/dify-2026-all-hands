@@ -77,32 +77,56 @@ export const SLIDES: SlideData[] = [
     footer: "第一部分"
   },
 
-  // 开场 Hook
+  // 开场 Hook - 更强冲击力
   {
     id: 4,
     type: SlideType.MACRO_FOCUS,
-    title: "2025 年",
+    title: "AI 行业剧变",
     content: [
-      "2025 年，AI 行业发生的变化比过去五年加起来还多",
+      "2025 年发生的变化 > 过去五年总和",
       "Dify 的下一步，取决于我们今天的选择"
     ]
   },
 
-  // 2025 回顾合并
+  // 2025 回顾 - 改用 SPLIT 布局，左右对比更清晰
   {
     id: 5,
-    type: SlideType.MATRIX,
+    type: SlideType.SPLIT,
     title: "2025 年回顾",
     subtitle: "成绩与挑战并存",
-    tableData: {
-      headers: ["做得好的", "需要改进的"],
-      rows: [
-        ["融资顺利 — 资金储备充足", "产品工程太慢 — 迭代速度跟不上市场"],
-        ["基建完善 — 技术底座稳固", "市场洞察力不够 — 对用户需求理解不深"],
-        ["团队扩张 — 人才梯队搭建完成", "决策速度慢 — 情报消化、小项目制运转不够"],
-        ["", "组织效率低 — 仍停留在古典大规模分工阶段"]
-      ]
-    }
+    content: [
+      "**做得好的**",
+      "✓ 融资顺利，资金储备充足",
+      "✓ 基建完善，技术底座稳固",
+      "✓ 团队扩张，人才梯队搭建完成"
+    ],
+    visualContent: (
+      <div className="flex flex-col justify-center h-full">
+        <div className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200 rounded-xl p-8">
+          <h3 className="text-2xl font-bold text-red-600 mb-6 flex items-center gap-3">
+            <AlertTriangle size={28} /> 需要改进的
+          </h3>
+          <ul className="space-y-4 text-lg text-slate-700">
+            <li className="flex items-start gap-3">
+              <span className="text-red-500 font-bold">×</span>
+              <span><strong>产品工程太慢</strong> — 迭代速度跟不上市场</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-red-500 font-bold">×</span>
+              <span><strong>市场洞察力不够</strong> — 对用户需求理解不深</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-red-500 font-bold">×</span>
+              <span><strong>决策速度慢</strong> — 情报消化、小项目制运转不够</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-red-500 font-bold">×</span>
+              <span><strong>组织效率低</strong> — 仍停留在古典大规模分工阶段</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    )
   },
 
   // 模型军备竞赛 - 4个关键节点卡片
@@ -189,51 +213,70 @@ export const SLIDES: SlideData[] = [
     }
   },
 
-  // P0-1: Google Trends 数据 Slide
+  // Google Trends - 更专业的数据可视化
   {
     id: 9,
-    type: SlideType.SPLIT,
+    type: SlideType.DIAGRAM,
     title: "Google Trends 印证趋势变化",
-    subtitle: "搜索热度反映市场关注度迁移",
-    content: [
-      "**RAG 搜索热度下降**",
-      "传统检索增强生成方式热度见顶回落",
-      "",
-      "**AI Agent 搜索热度上升**",
-      "自主决策、工具调用成为新焦点",
-      "",
-      "**AI Workflow 搜索热度上升**",
-      "可视化编排、自动化流程持续升温",
-      "",
-      "数据来源：Google Trends"
-    ],
+    subtitle: "搜索热度反映市场关注度迁移（2024.1 - 2025.12）",
     visualContent: (
-      <div className="flex flex-col items-center justify-center h-full gap-8">
-        <div className="text-center transform -translate-y-4">
-          <div className="flex items-end justify-center gap-6 mb-8">
-            <div className="text-center">
-              <div className="h-32 w-20 bg-red-100 rounded-t-lg flex items-end justify-center pb-3 border-2 border-red-300 relative">
-                <TrendingDown size={48} className="text-red-500 absolute -top-6"/>
-                <span className="text-3xl font-bold text-red-600">-40%</span>
+      <div className="flex flex-col items-center justify-center h-full w-full px-8">
+        <div className="w-full max-w-4xl">
+          <div className="flex justify-between items-center mb-8">
+            <div className="flex items-center gap-8">
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 rounded-full bg-red-500"></div>
+                <span className="text-sm font-medium text-slate-600">RAG</span>
               </div>
-              <p className="text-sm text-slate-600 mt-3 font-bold">RAG</p>
-            </div>
-            <div className="text-center">
-              <div className="h-48 w-20 bg-green-100 rounded-t-lg flex items-end justify-center pb-3 border-2 border-green-400 relative">
-                <TrendingUp size={56} className="text-green-600 absolute -top-7"/>
-                <span className="text-4xl font-extrabold text-green-700">+120%</span>
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 rounded-full bg-green-500"></div>
+                <span className="text-sm font-medium text-slate-600">AI Agent</span>
               </div>
-              <p className="text-sm text-slate-600 mt-3 font-bold">Agent</p>
-            </div>
-            <div className="text-center">
-              <div className="h-40 w-20 bg-blue-100 rounded-t-lg flex items-end justify-center pb-3 border-2 border-blue-400 relative">
-                <TrendingUp size={52} className="text-blue-600 absolute -top-6"/>
-                <span className="text-3xl font-bold text-blue-700">+85%</span>
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 rounded-full bg-dify-blue"></div>
+                <span className="text-sm font-medium text-slate-600">AI Workflow</span>
               </div>
-              <p className="text-sm text-slate-600 mt-3 font-bold">Workflow</p>
             </div>
           </div>
-          <p className="text-xs text-slate-400">数据来源：Google Trends (2024.1 - 2025.12)</p>
+          
+          <div className="flex items-end justify-center gap-12 mb-8">
+            <div className="text-center group">
+              <div className="relative">
+                <div className="h-28 w-28 bg-gradient-to-t from-red-200 to-red-100 rounded-xl flex flex-col items-center justify-center border-2 border-red-300 shadow-lg group-hover:shadow-xl transition-shadow">
+                  <TrendingDown size={32} className="text-red-500 mb-1"/>
+                  <span className="text-3xl font-black text-red-600">-40%</span>
+                </div>
+                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-red-300"></div>
+              </div>
+              <p className="text-lg text-slate-700 mt-6 font-bold">RAG</p>
+              <p className="text-xs text-slate-400 mt-1">传统检索增强</p>
+            </div>
+            
+            <div className="text-center group">
+              <div className="relative">
+                <div className="h-48 w-28 bg-gradient-to-t from-green-300 to-green-100 rounded-xl flex flex-col items-center justify-center border-2 border-green-400 shadow-lg group-hover:shadow-xl transition-shadow">
+                  <TrendingUp size={40} className="text-green-600 mb-2"/>
+                  <span className="text-4xl font-black text-green-700">+120%</span>
+                </div>
+                <div className="absolute -top-3 right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">HOT</div>
+              </div>
+              <p className="text-lg text-slate-700 mt-6 font-bold">AI Agent</p>
+              <p className="text-xs text-slate-400 mt-1">自主决策</p>
+            </div>
+            
+            <div className="text-center group">
+              <div className="relative">
+                <div className="h-40 w-28 bg-gradient-to-t from-blue-300 to-blue-100 rounded-xl flex flex-col items-center justify-center border-2 border-dify-blue shadow-lg group-hover:shadow-xl transition-shadow">
+                  <TrendingUp size={36} className="text-dify-blue mb-2"/>
+                  <span className="text-3xl font-black text-dify-blue">+85%</span>
+                </div>
+              </div>
+              <p className="text-lg text-slate-700 mt-6 font-bold">AI Workflow</p>
+              <p className="text-xs text-slate-400 mt-1">可视化编排</p>
+            </div>
+          </div>
+          
+          <p className="text-center text-sm text-slate-400 mt-4">数据来源：Google Trends</p>
         </div>
       </div>
     )
@@ -279,27 +322,30 @@ export const SLIDES: SlideData[] = [
     footer: "第二部分"
   },
 
-  // 产品矩阵概览
+  // 产品矩阵概览 - 用 PILLARS 展示三条产品线
   {
     id: 12,
-    type: SlideType.CARDS,
+    type: SlideType.PILLARS,
     title: "Dify 产品矩阵",
     subtitle: "三条产品线，三个战场",
     items: [
       {
-        title: "第一条线：技术底座",
-        description: "社区版 + 企业版\n负责人：小明 + 周宇",
-        icon: <Code className="text-blue-500"/>
+        title: "第一条线",
+        description: "技术底座",
+        icon: <Code className="text-dify-blue" size={48}/>,
+        features: ["社区版 + 企业版", "负责人：小明 + 周宇", "维护开源社区", "服务企业客户"]
       },
       {
-        title: "第二条线：轻量商业",
-        description: "SaaS 化产品\n负责人：王征 + 子浩",
-        icon: <Cloud className="text-purple-500"/>
+        title: "第二条线",
+        description: "轻量商业",
+        icon: <Cloud className="text-dify-blue" size={48}/>,
+        features: ["SaaS 化产品", "负责人：王征 + 子浩", "独立迭代", "承担 ARR 目标"]
       },
       {
-        title: "第三条线：战略突破",
-        description: "画布业务\n负责人：张路宇",
-        icon: <Palette className="text-orange-500"/>
+        title: "第三条线",
+        description: "战略突破",
+        icon: <Palette className="text-dify-blue" size={48}/>,
+        features: ["画布业务", "负责人：张路宇", "CEO 亲自带队", "抢占窗口期"]
       }
     ]
   },
@@ -698,18 +744,33 @@ export const SLIDES: SlideData[] = [
     ]
   },
 
-  // 行动号召
+  // 行动号召 - 用 CARDS 更醒目
   {
     id: 32,
-    type: SlideType.CONTENT,
-    title: "对每个人的行动号召",
-    content: [
-      "1. 确认你在哪条线 — 找到自己的位置",
-      "",
-      "2. 明确你的 DRI 身份 — 承担具体责任",
-      "",
-      "3. All in，全力执行 — 能和不能会被快速识别"
-    ]
+    type: SlideType.CARDS,
+    title: "从今天开始，你需要做三件事",
+    subtitle: "行动号召",
+    items: [
+      {
+        title: "找到你的位置",
+        description: "确认你在哪条产品线\n技术底座 / SaaS / 画布",
+        icon: <Target className="text-dify-blue"/>
+      },
+      {
+        title: "明确你的身份",
+        description: "你是 DRI，还是支持某个 DRI？\n权责清晰是执行力的基础",
+        icon: <UserCheck className="text-dify-blue"/>
+      },
+      {
+        title: "All in 全力执行",
+        description: "能和不能会被快速识别\n没有旁观者",
+        icon: <Rocket className="text-dify-blue"/>
+      }
+    ],
+    bottomBanner: {
+      text: "机会与压力并存：DRI 制度让每个人都有机会成为决策者",
+      type: "info"
+    }
   },
 
   // END
