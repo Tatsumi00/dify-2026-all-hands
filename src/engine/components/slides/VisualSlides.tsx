@@ -28,38 +28,8 @@ export const TitleSlide: React.FC<SlideProps> = ({ slide }) => (
         </div>
       </div>
 
-      {/* Right Side: Geometric Hero Element (Golden Ratio ~38%) */}
-      <div className="hidden lg:flex w-[38%] bg-gradient-to-br from-blue-50 to-white relative overflow-hidden">
-        {/* Animated Geometric Shapes */}
-        <div className="absolute inset-0 flex items-center justify-center">
-
-          {/* Large Background Circle */}
-          <div className="absolute w-96 h-96 rounded-full border-8 border-dify-blue/10 animate-pulse"></div>
-
-          {/* Main Square (Rotated 45deg) */}
-          <div className="absolute w-64 h-64 bg-dify-blue rotate-45 opacity-90 shadow-2xl">
-            <div className="absolute inset-4 bg-white/20"></div>
-            <div className="absolute inset-8 bg-white/20"></div>
-          </div>
-
-          {/* Accent Elements */}
-          <div className="absolute -top-12 -right-12 w-40 h-40 bg-blue-600/20 rotate-12"></div>
-          <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-dify-blue/10 rounded-full"></div>
-
-          {/* Small Decorative Squares */}
-          <div className="absolute top-20 right-32 w-12 h-12 border-4 border-dify-blue/40 rotate-45"></div>
-          <div className="absolute bottom-32 left-20 w-16 h-16 bg-dify-blue/30"></div>
-        </div>
-
-        {/* Grid Pattern Overlay */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="w-full h-full" style={{
-            backgroundImage: `linear-gradient(0deg, transparent 24%, rgba(21, 94, 239, 0.3) 25%, rgba(21, 94, 239, 0.3) 26%, transparent 27%, transparent 74%, rgba(21, 94, 239, 0.3) 75%, rgba(21, 94, 239, 0.3) 76%, transparent 77%, transparent),
-            linear-gradient(90deg, transparent 24%, rgba(21, 94, 239, 0.3) 25%, rgba(21, 94, 239, 0.3) 26%, transparent 27%, transparent 74%, rgba(21, 94, 239, 0.3) 75%, rgba(21, 94, 239, 0.3) 76%, transparent 77%, transparent)`,
-            backgroundSize: '50px 50px'
-          }}></div>
-        </div>
-      </div>
+      {/* Right Side: Clean white space */}
+      <div className="hidden lg:flex w-[38%] bg-white"></div>
   </div>
 );
 
