@@ -17,14 +17,14 @@ export const AccordionSlide: React.FC<AccordionSlideProps> = ({ slide }) => {
         <BackgroundPattern />
         <SlideHeader title={slide.title} subtitle={slide.subtitle} />
         <div className="flex-grow relative z-10 overflow-hidden">
-            <div className="flex flex-col gap-4 w-full h-full overflow-y-auto pr-2 pb-10 scrollbar-hide">
+            <div className="flex flex-col gap-4 w-full h-full overflow-y-auto pr-2 pb-10 pt-2 pl-1 scrollbar-hide">
                 {slide.items.map((item, idx) => {
                     const isOpen = expandedIndex === idx;
                     return (
-                        <div 
-                            key={idx} 
+                        <div
+                            key={idx}
                             className={`bg-white rounded-xl border transition-all duration-300 overflow-hidden cursor-pointer shadow-sm group
-                            ${isOpen ? 'border-dify-blue shadow-lg scale-[1.01] ring-1 ring-blue-100' : 'border-gray-100 hover:border-blue-200'}
+                            ${isOpen ? 'border-dify-blue shadow-lg ring-1 ring-blue-100' : 'border-gray-100 hover:border-blue-200'}
                             `}
                             onClick={() => setExpandedIndex(isOpen ? null : idx)}
                         >
