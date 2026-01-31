@@ -38,39 +38,48 @@ export const SLIDES: SlideData[] = [
     ]
   },
 
-  // 2025 回顾 - 改用 SPLIT 布局，左右对比更清晰
+  // 2025 回顾 - 左右对比布局
   {
     id: 4,
-    type: SlideType.SPLIT,
+    type: SlideType.DIAGRAM,
     title: "2025 年回顾",
     subtitle: "成绩与挑战并存",
-    content: [
-      "**做得好的**",
-      "✓ 融资顺利，资金储备充足",
-      "✓ 基建完善，技术底座稳固",
-      "✓ 团队扩张，人才梯队搭建完成"
-    ],
     visualContent: (
-      <div className="flex flex-col justify-center h-full">
-        <div className="bg-gray-50 border-2 border-gray-100 rounded-xl p-8">
-          <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <AlertTriangle size={28} className="text-gray-400" /> 需要改进的
-          </h3>
-          <ul className="space-y-4 text-lg text-gray-600">
-            <li className="flex items-start gap-3">
-              <span className="text-gray-400 font-bold">×</span>
+      <div className="grid grid-cols-2 gap-20 w-full max-w-6xl mx-auto">
+        <div className="flex flex-col">
+          <h3 className="text-3xl font-extrabold text-gray-900 mb-8">做得好的</h3>
+          <ul className="space-y-5">
+            <li className="flex items-start gap-4 text-xl text-gray-700">
+              <span className="text-dify-blue mt-1">✓</span>
+              <span><strong>融资顺利</strong>，资金储备充足</span>
+            </li>
+            <li className="flex items-start gap-4 text-xl text-gray-700">
+              <span className="text-dify-blue mt-1">✓</span>
+              <span><strong>基建完善</strong>，技术底座稳固</span>
+            </li>
+            <li className="flex items-start gap-4 text-xl text-gray-700">
+              <span className="text-dify-blue mt-1">✓</span>
+              <span><strong>团队扩张</strong>，人才梯队搭建完成</span>
+            </li>
+          </ul>
+        </div>
+        <div className="flex flex-col">
+          <h3 className="text-3xl font-extrabold text-gray-900 mb-8">需要改进的</h3>
+          <ul className="space-y-5">
+            <li className="flex items-start gap-4 text-xl text-gray-700">
+              <span className="text-gray-400 mt-1">×</span>
               <span><strong>产品工程太慢</strong> — 迭代速度跟不上市场</span>
             </li>
-            <li className="flex items-start gap-3">
-              <span className="text-gray-400 font-bold">×</span>
+            <li className="flex items-start gap-4 text-xl text-gray-700">
+              <span className="text-gray-400 mt-1">×</span>
               <span><strong>市场洞察力不够</strong> — 对用户需求理解不深</span>
             </li>
-            <li className="flex items-start gap-3">
-              <span className="text-gray-400 font-bold">×</span>
+            <li className="flex items-start gap-4 text-xl text-gray-700">
+              <span className="text-gray-400 mt-1">×</span>
               <span><strong>决策速度慢</strong> — 情报消化、小项目制运转不够</span>
             </li>
-            <li className="flex items-start gap-3">
-              <span className="text-gray-400 font-bold">×</span>
+            <li className="flex items-start gap-4 text-xl text-gray-700">
+              <span className="text-gray-400 mt-1">×</span>
               <span><strong>组织效率低</strong> — 仍停留在古典大规模分工阶段</span>
             </li>
           </ul>
