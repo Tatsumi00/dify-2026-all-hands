@@ -4,8 +4,8 @@ import {
   TrendingDown, TrendingUp, AlertTriangle, CheckCircle,
   Users, Target, Code, Cloud, Palette,
   UserCheck, Shield, GitBranch, MessageSquare,
-  Zap, Award, Calendar, Lightbulb, Layers, Rocket,
-  Star, Monitor, BarChart3, ArrowRight, Sparkles
+  Zap, Award, Lightbulb, Layers, Rocket,
+  ArrowRight, Sparkles
 } from 'lucide-react';
 
 export const SLIDES: SlideData[] = [
@@ -317,22 +317,22 @@ export const SLIDES: SlideData[] = [
     subtitle: "三条产品线，三个战场",
     items: [
       {
-        title: "第一条线",
-        description: "技术底座",
+        title: "CE & EE 线",
+        description: "70% 投入",
         icon: <Code className="text-dify-blue" size={48}/>,
-        features: ["社区版 + 企业版", "负责人：小明 + 周宇", "维护开源社区", "服务企业客户"]
+        features: ["CE：周宇 + 海明", "EE：Kiji", "技术底座 + 企业服务", "中美两套 IP"]
       },
       {
-        title: "第二条线",
-        description: "轻量商业",
+        title: "SaaS 线",
+        description: "20% 投入",
         icon: <Cloud className="text-dify-blue" size={48}/>,
-        features: ["SaaS 化产品", "负责人：王征 + 子浩", "独立迭代", "承担 ARR 目标"]
+        features: ["王征 + 梓浩", "从主仓独立", "海外 SMB 市场", "北美垂直 PMF"]
       },
       {
-        title: "第三条线",
-        description: "战略突破",
+        title: "新世代产品",
+        description: "10% 早期投入",
         icon: <Palette className="text-dify-blue" size={48}/>,
-        features: ["画布业务", "负责人：张路宇", "CEO 亲自带队", "抢占窗口期"]
+        features: ["CEO 亲自带队", "TPS 理念新画布", "北美 R&D 团队", "Innovation Labs"]
       }
     ]
   },
@@ -362,142 +362,102 @@ export const SLIDES: SlideData[] = [
   // 第一条线详情
   {
     id: 14,
-    type: SlideType.CONTENT,
-    title: "第一条线：社区版 + 企业版",
-    subtitle: "负责人：小明 + 周宇 | 定位：技术底座",
-    content: [
-      "**目标：**",
-      "降低工程负担",
-      "保持技术领先",
-      "提升企业版客户体验",
-      "",
-      "**核心工作：**",
-      "维护开源社区",
-      "服务企业客户"
-    ]
+    type: SlideType.MATRIX,
+    title: "第一条线：CE & EE（70%）",
+    subtitle: "组织重构，明确分工",
+    tableData: {
+      headers: ["业务模块", "负责人", "汇报线", "核心目标"],
+      rows: [
+        ["CE 产品", "周宇 + 海明", "→ CEO", "维护开源社区，保持技术领先"],
+        ["EE 产品线", "Kiji", "→ CEO", "结合 DE 团队，年内实现中美两套 IP"],
+        ["Digital Marketing", "田磊", "→ CEO", "转守为攻，服务 PMF 优势市场，品牌统筹"],
+        ["运营体系", "赵雅雯", "→ CEO/海明", "文档/DevRel/社区/技术支持/生态运营"],
+        ["质量组（新）", "戴志强", "→ Boyan", "建立质量保障体系"],
+        ["BizOps & CRM", "—", "→ 潘潘", "移交财务线统一管理"]
+      ]
+    },
+    bottomBanner: {
+      text: "北美：文斯、子轩移交 Andy (北美 GM) 管理，文斯不再承担管理职能",
+      type: "info"
+    }
   },
 
   // 第二条线详情
   {
     id: 15,
-    type: SlideType.CONTENT,
-    title: "第二条线：SaaS 化产品",
-    subtitle: "负责人：王征 + 子浩 | 定位：轻量商业",
+    type: SlideType.SPLIT,
+    title: "第二条线：SaaS（20%）",
+    subtitle: "王征 + 梓浩 Coleader | 定位：海外 SMB",
     content: [
-      "**主要任务：**",
-      "将现有产品彻底 SaaS 化，从主仓脱钩",
+      "**核心变化**",
+      "SaaS 从 CE 主仓彻底拆分",
+      "独立代码库、独立迭代节奏",
       "",
-      "**目标：**",
-      "降低工程负担",
-      "实现产品闭环",
-      "承担 ARR 目标",
+      "**团队重组**",
+      "现有 SaaS 团队 + 王征团队合并",
+      "Ben 专注北美垂直 PMF 策略支持",
       "",
-      "**为什么需要这条线？**",
-      "主仓耦合导致迭代慢，需要独立验证商业模式，为第三条线腾出精力"
-    ]
-  },
-
-  // 画布定义
-  {
-    id: 16,
-    type: SlideType.MACRO_FOCUS,
-    title: "什么是画布？",
-    content: [
-      "画布 = 可视化的 AI 协作空间",
-      "用户在画布上",
-      "与 AI 共同创作、编辑、迭代内容"
-    ]
-  },
-
-  // P0-3: 画布 vs 传统 Workflow 对比表
-  {
-    id: 17,
-    type: SlideType.MATRIX,
-    title: "画布 vs 传统 Workflow",
-    subtitle: "交互范式的根本性变化",
-    tableData: {
-      headers: ["维度", "传统 Workflow", "画布"],
-      rows: [
-        ["交互方式", "固定流程、节点连线", "自由布局、实时协作"],
-        ["适用场景", "确定性任务", "探索性、创意性任务"],
-        ["用户心智", "配置工具", "思考空间"],
-        ["协作模式", "单人配置", "多人实时协作"]
-      ]
-    },
-    bottomBanner: {
-      text: "画布不是 Workflow 的升级版，而是全新的产品形态",
-      type: "info"
-    }
-  },
-
-  {
-    id: 18,
-    type: SlideType.CARDS,
-    title: "行业信号：巨头都在押注画布",
-    subtitle: "共同特征：从对话转向协作，从生成转向迭代",
-    items: [
-      {
-        title: "ChatGPT Canvas",
-        description: "OpenAI 可视化协作界面\n支持实时编辑与迭代",
-        icon: <Monitor className="text-dify-blue"/>
-      },
-      {
-        title: "Claude Artifacts",
-        description: "Anthropic 交互式内容生成\n代码、文档即时呈现",
-        icon: <Monitor className="text-dify-blue"/>
-      },
-      {
-        title: "Cursor Composer",
-        description: "AI 编程工具画布化\n多文件协同编辑",
-        icon: <Monitor className="text-dify-blue"/>
-      }
+      "**目标市场**",
+      "中国以外地区的 SMB 业务",
+      "承担 ARR 目标，独立验证商业模式"
     ],
-    bottomBanner: {
-      text: "Dify 需要在这个窗口期抢占先机",
-      type: "warning"
-    }
+    visualContent: (
+      <div className="flex items-center justify-center h-full">
+        <div className="bg-gradient-to-br from-blue-50 to-white border-2 border-dify-blue/20 rounded-xl p-8 text-center max-w-md">
+          <Cloud size={48} className="mx-auto text-dify-blue mb-4"/>
+          <p className="text-xl font-bold text-slate-800 mb-2">
+            从主仓解耦 = 独立迭代
+          </p>
+          <p className="text-slate-600">
+            不再受主仓节奏限制<br/>
+            快速响应海外市场需求
+          </p>
+        </div>
+      </div>
+    )
   },
 
   // 第三条线详情
   {
-    id: 19,
-    type: SlideType.MACRO_FOCUS,
-    title: "第三条线：画布业务",
-    subtitle: "CEO 亲自带队 | 定位：战略突破",
+    id: 16,
+    type: SlideType.SPLIT,
+    title: "第三条线：新世代产品（10%）",
+    subtitle: "CEO 亲自带队 | TPS 理念新画布",
     content: [
-      "未来半年内的重大机会，不亚于 Dify 最早期的那个机会",
-      "新的交互形式、新的协作范式",
-      "当前所有方向中 ROI 最高，公司未来的重要增长点"
-    ]
-  },
-
-  {
-    id: 20,
-    type: SlideType.CARDS,
-    title: "画布业务的投入级别",
-    subtitle: "公司最高战略优先级",
-    items: [
-      {
-        title: "CEO 亲自带队",
-        description: "公司最高优先级\n路宇亲自负责产品方向",
-        icon: <Star className="text-dify-blue"/>
-      },
-      {
-        title: "独立团队",
-        description: "不受主仓迭代节奏影响\n独立招聘、独立决策",
-        icon: <Users className="text-dify-blue"/>
-      },
-      {
-        title: "快速迭代",
-        description: "小步快跑，抢占窗口期\n两周一个版本",
-        icon: <Zap className="text-dify-blue"/>
-      }
-    ]
+      "**团队构成**",
+      "CEO (张路宇) Leader",
+      "Gu 等北美 R&D 人员",
+      "",
+      "**核心目标**",
+      "打造基于 TPS 理念的新画布产品",
+      "找到 Product-Market Fit",
+      "",
+      "**Innovation Labs（新设）**",
+      "由 Kiji 管理",
+      "承载技术研究和实验",
+      "成果纳入三条产品线实现产品化"
+    ],
+    visualContent: (
+      <div className="flex flex-col items-center justify-center h-full gap-6">
+        <div className="bg-gradient-to-br from-purple-50 to-white border-2 border-purple-200 rounded-xl p-6 text-center max-w-sm">
+          <Palette size={40} className="mx-auto text-dify-blue mb-3"/>
+          <p className="text-lg font-bold text-slate-800 mb-2">新世代产品</p>
+          <p className="text-sm text-slate-600">TPS 理念 × 画布交互</p>
+          <p className="text-xs text-dify-blue mt-2">→ 寻找 PMF</p>
+        </div>
+        <div className="bg-gradient-to-br from-indigo-50 to-white border-2 border-indigo-200 rounded-xl p-6 text-center max-w-sm">
+          <Lightbulb size={40} className="mx-auto text-indigo-500 mb-3"/>
+          <p className="text-lg font-bold text-slate-800 mb-2">Innovation Labs</p>
+          <p className="text-sm text-slate-600">Kiji 管理 · 技术研究 · 实验孵化</p>
+          <p className="text-xs text-indigo-500 mt-2">→ 成果输出到三条产品线</p>
+        </div>
+      </div>
+    )
   },
 
   // ========== PART 3: DRI 制度 ==========
   {
-    id: 21,
+    id: 17,
     type: SlideType.SECTION,
     title: "组织创新：DRI 制度",
     subtitle: "有权力才有责任，广泛听取、独立决策",
@@ -505,7 +465,7 @@ export const SLIDES: SlideData[] = [
   },
 
   {
-    id: 22,
+    id: 18,
     type: SlideType.CARDS,
     title: "为什么引入 DRI？",
     subtitle: "团队扩大到 100 人，大企业病早期症状出现",
@@ -529,7 +489,7 @@ export const SLIDES: SlideData[] = [
   },
 
   {
-    id: 23,
+    id: 19,
     type: SlideType.SPLIT,
     title: "什么是 DRI？",
     subtitle: "Directly Responsible Individual",
@@ -571,7 +531,7 @@ export const SLIDES: SlideData[] = [
 
   // P1-7: DRI 场景示例
   {
-    id: 24,
+    id: 20,
     type: SlideType.MATRIX,
     title: "DRI 的四大职责",
     subtitle: "DRI 不是干活最多的人，而是扫除障碍、整合资源的人",
@@ -591,7 +551,7 @@ export const SLIDES: SlideData[] = [
   },
 
   {
-    id: 25,
+    id: 21,
     type: SlideType.CARDS,
     title: "负责的定义",
     subtitle: "DRI 机制下，负责不是背锅",
@@ -619,7 +579,7 @@ export const SLIDES: SlideData[] = [
   },
 
   {
-    id: 26,
+    id: 22,
     type: SlideType.ACCORDION,
     title: "DRI 三大核心原则",
     items: [
@@ -643,7 +603,7 @@ export const SLIDES: SlideData[] = [
 
   // Leader 与 DRI 的边界
   {
-    id: 27,
+    id: 23,
     type: SlideType.MATRIX,
     title: "Leader 与 DRI 的边界",
     subtitle: "这是 DRI 制度能否落地的关键",
@@ -658,7 +618,7 @@ export const SLIDES: SlideData[] = [
   },
 
   {
-    id: 28,
+    id: 24,
     type: SlideType.SPLIT,
     title: "对员工和主管的要求",
     content: [
@@ -723,7 +683,7 @@ export const SLIDES: SlideData[] = [
 
   // DRI 效果
   {
-    id: 29,
+    id: 25,
     type: SlideType.KEY_TAKEAWAYS,
     title: "DRI 制度的预期效果",
     content: [
@@ -735,7 +695,7 @@ export const SLIDES: SlideData[] = [
 
   // ========== PART 4: 总结 ==========
   {
-    id: 30,
+    id: 26,
     type: SlideType.SECTION,
     title: "总结",
     subtitle: "核心信息与行动指南",
@@ -743,7 +703,7 @@ export const SLIDES: SlideData[] = [
   },
 
   {
-    id: 31,
+    id: 27,
     type: SlideType.CARDS,
     title: "核心信息",
     subtitle: "2026 年的三个关键变化",
@@ -768,14 +728,14 @@ export const SLIDES: SlideData[] = [
 
   // 行动号召 - 用 CARDS 更醒目
   {
-    id: 32,
+    id: 28,
     type: SlideType.CARDS,
     title: "从今天开始，你需要做三件事",
     subtitle: "行动号召",
     items: [
       {
         title: "找到你的位置",
-        description: "确认你在哪条产品线\n技术底座 / SaaS / 画布",
+        description: "确认你在哪条产品线\nCE&EE / SaaS / 新世代产品",
         icon: <Target className="text-dify-blue"/>
       },
       {
@@ -797,7 +757,7 @@ export const SLIDES: SlideData[] = [
 
   // END
   {
-    id: 33,
+    id: 29,
     type: SlideType.END,
     title: "Q&A",
     subtitle: "谢谢大家",
