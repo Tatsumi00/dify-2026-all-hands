@@ -27,7 +27,7 @@ export const SLIDES: SlideData[] = [
     footer: "第一部分"
   },
 
-  // 开场 Hook - 更强冲击力
+  // ===== 外部环境：行业发生了什么 =====
   {
     id: 3,
     type: SlideType.MACRO_FOCUS,
@@ -38,9 +38,103 @@ export const SLIDES: SlideData[] = [
     ]
   },
 
-  // 2025 回顾 - 左右对比布局
   {
     id: 4,
+    type: SlideType.CARDS,
+    title: "2025 关键节点",
+    subtitle: "四个改变行业的时刻",
+    items: [
+      {
+        title: "开源重塑",
+        description: "Q1，DeepSeek 以极致推理效率 + 开源生态\n打破闭源垄断，重构 AI Infra 性价比基准",
+        icon: <Rocket className="text-dify-blue"/>,
+        tags: ["Q1"]
+      },
+      {
+        title: "形态进化",
+        description: "Q2，Claude Code / Manus 落地\nAgent 从概念到生产力工具，定义 GA 交互形态",
+        icon: <Code className="text-dify-blue"/>,
+        tags: ["Q2"]
+      },
+      {
+        title: "全能力对齐",
+        description: "Q3，多模态 × 逻辑推理达成共识\n模型能力进入全方位、低延迟感知统一时代",
+        icon: <Layers className="text-dify-blue"/>,
+        tags: ["Q3"]
+      },
+      {
+        title: "开发范式转移",
+        description: "Q4，软件工程进入 AI 原生阶段\nCoding Agent 从辅助工具质变为独立开发者",
+        icon: <Sparkles className="text-dify-blue"/>,
+        tags: ["Q4"]
+      }
+    ]
+  },
+
+  {
+    id: 5,
+    type: SlideType.DIAGRAM,
+    title: "Google Trends 印证趋势变化",
+    subtitle: "搜索热度（美国，2025 全年）— 柱高 = 基本盘，箭头 = 趋势",
+    visualContent: (
+      <div className="flex flex-col items-center justify-center h-full w-full px-8">
+        <div className="w-full max-w-5xl">
+          <div className="flex items-end justify-center gap-16">
+            <div className="flex flex-col items-center">
+              <div className="relative flex flex-col items-center">
+                <div className="absolute -top-8 text-amber-500 font-bold text-lg">→</div>
+                <div className="text-amber-600 font-black text-2xl mb-2">70</div>
+                <div className="w-32 bg-gradient-to-t from-amber-400 to-amber-200 rounded-t-lg shadow-lg flex items-end justify-center" style={{height: '220px'}}>
+                  <span className="text-white font-bold text-sm mb-4 opacity-80">平稳</span>
+                </div>
+              </div>
+              <div className="mt-4 text-center">
+                <p className="text-xl font-bold text-slate-800">RAG</p>
+                <p className="text-sm text-slate-500">基本盘最大</p>
+                <p className="text-xs text-amber-600 mt-1">趋势平稳</p>
+              </div>
+            </div>
+            
+            <div className="flex flex-col items-center">
+              <div className="relative flex flex-col items-center">
+                <div className="absolute -top-8 text-dify-blue font-bold text-lg">↗</div>
+                <div className="text-dify-blue font-black text-2xl mb-2">34</div>
+                <div className="w-32 bg-gradient-to-t from-dify-blue to-blue-300 rounded-t-lg shadow-lg flex items-end justify-center relative" style={{height: '107px'}}>
+                  <div className="absolute -top-3 -right-2 bg-dify-blue text-white text-xs font-bold px-2 py-1 rounded-full">HOT</div>
+                  <span className="text-white font-bold text-sm mb-4 opacity-80">上升</span>
+                </div>
+              </div>
+              <div className="mt-4 text-center">
+                <p className="text-xl font-bold text-slate-800">AI Agent</p>
+                <p className="text-sm text-slate-500">增速最快</p>
+                <p className="text-xs text-dify-blue mt-1">↑ 上升趋势</p>
+              </div>
+            </div>
+            
+            <div className="flex flex-col items-center">
+              <div className="relative flex flex-col items-center">
+                <div className="absolute -top-8 text-rose-500 font-bold text-lg">↗</div>
+                <div className="text-rose-500 font-black text-2xl mb-2">9</div>
+                <div className="w-32 bg-gradient-to-t from-rose-400 to-rose-200 rounded-t-lg shadow-lg flex items-end justify-center" style={{height: '28px'}}>
+                </div>
+              </div>
+              <div className="mt-4 text-center">
+                <p className="text-xl font-bold text-slate-800">AI Workflow</p>
+                <p className="text-sm text-slate-500">基本盘较小</p>
+                <p className="text-xs text-rose-500 mt-1">↑ 缓慢上升</p>
+              </div>
+            </div>
+          </div>
+          
+          <p className="text-center text-sm text-slate-400 mt-8">数据来源：Google Trends · Average Interest 2025</p>
+        </div>
+      </div>
+    )
+  },
+
+  // ===== 内部审视：我们怎么样 =====
+  {
+    id: 6,
     type: SlideType.DIAGRAM,
     title: "2025 年回顾",
     subtitle: "成绩与挑战并存",
@@ -89,130 +183,7 @@ export const SLIDES: SlideData[] = [
   },
 
   {
-    id: 5,
-    type: SlideType.CARDS,
-    title: "2025 关键节点",
-    subtitle: "四个改变行业的时刻",
-    items: [
-      {
-        title: "开源重塑",
-        description: "Q1，DeepSeek 以极致推理效率 + 开源生态\n打破闭源垄断，重构 AI Infra 性价比基准",
-        icon: <Rocket className="text-dify-blue"/>,
-        tags: ["Q1"]
-      },
-      {
-        title: "形态进化",
-        description: "Q2，Claude Code / Manus 落地\nAgent 从概念到生产力工具，定义 GA 交互形态",
-        icon: <Code className="text-dify-blue"/>,
-        tags: ["Q2"]
-      },
-      {
-        title: "全能力对齐",
-        description: "Q3，多模态 × 逻辑推理达成共识\n模型能力进入全方位、低延迟感知统一时代",
-        icon: <Layers className="text-dify-blue"/>,
-        tags: ["Q3"]
-      },
-      {
-        title: "开发范式转移",
-        description: "Q4，软件工程进入 AI 原生阶段\nCoding Agent 从辅助工具质变为独立开发者",
-        icon: <Sparkles className="text-dify-blue"/>,
-        tags: ["Q4"]
-      }
-    ]
-  },
-
-  // Dify 必须变
-  {
-    id: 6,
-    type: SlideType.MATRIX,
-    title: "Dify 必须变",
-    subtitle: "三个核心模块的变革路径",
-    tableData: {
-      headers: ["模块", "变化趋势", "应对策略"],
-      rows: [
-        ["插件体系", "与 Skills 产生替代关系", "重新定义生态边界"],
-        ["RAG / 知识库", "范式转移，传统 RAG 不再主流", "拥抱 Context 工程"],
-        ["Workflow", "需要更柔性、更易用", "引入拉动式概念"]
-      ]
-    },
-    bottomBanner: {
-      text: "核心判断：所有模块都要改，只是改的路径不一样",
-      type: "warning"
-    }
-  },
-
-  // Google Trends - 更专业的数据可视化
-  {
     id: 7,
-    type: SlideType.DIAGRAM,
-    title: "Google Trends 印证趋势变化",
-    subtitle: "搜索热度反映市场关注度迁移（2024.1 - 2025.12）",
-    visualContent: (
-      <div className="flex flex-col items-center justify-center h-full w-full px-8">
-        <div className="w-full max-w-4xl">
-          <div className="flex justify-between items-center mb-8">
-            <div className="flex items-center gap-8">
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded-full bg-gray-400"></div>
-                <span className="text-sm font-medium text-slate-600">RAG</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded-full bg-blue-500"></div>
-                <span className="text-sm font-medium text-slate-600">AI Agent</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded-full bg-dify-blue"></div>
-                <span className="text-sm font-medium text-slate-600">AI Workflow</span>
-              </div>
-            </div>
-          </div>
-          
-          <div className="flex items-end justify-center gap-12 mb-8">
-            <div className="text-center group">
-              <div className="relative">
-                <div className="h-28 w-28 bg-gray-100 rounded-xl flex flex-col items-center justify-center border-2 border-gray-200 shadow-lg group-hover:shadow-xl transition-shadow">
-                  <TrendingDown size={32} className="text-gray-400 mb-1"/>
-                  <span className="text-3xl font-black text-gray-500">-40%</span>
-                </div>
-                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-gray-300"></div>
-              </div>
-              <p className="text-lg text-slate-700 mt-6 font-bold">RAG</p>
-              <p className="text-xs text-slate-400 mt-1">传统检索增强</p>
-            </div>
-            
-            <div className="text-center group">
-              <div className="relative">
-                <div className="h-48 w-28 bg-blue-50 rounded-xl flex flex-col items-center justify-center border-2 border-blue-200 shadow-lg group-hover:shadow-xl transition-shadow">
-                  <TrendingUp size={40} className="text-blue-600 mb-2"/>
-                  <span className="text-4xl font-black text-blue-700">+120%</span>
-                </div>
-                <div className="absolute -top-3 right-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full">HOT</div>
-              </div>
-              <p className="text-lg text-slate-700 mt-6 font-bold">AI Agent</p>
-              <p className="text-xs text-slate-400 mt-1">自主决策</p>
-            </div>
-            
-            <div className="text-center group">
-              <div className="relative">
-                <div className="h-40 w-28 bg-gradient-to-t from-blue-300 to-blue-100 rounded-xl flex flex-col items-center justify-center border-2 border-dify-blue shadow-lg group-hover:shadow-xl transition-shadow">
-                  <TrendingUp size={36} className="text-dify-blue mb-2"/>
-                  <span className="text-3xl font-black text-dify-blue">+85%</span>
-                </div>
-              </div>
-              <p className="text-lg text-slate-700 mt-6 font-bold">AI Workflow</p>
-              <p className="text-xs text-slate-400 mt-1">可视化编排</p>
-            </div>
-          </div>
-          
-          <p className="text-center text-sm text-slate-400 mt-4">数据来源：Google Trends</p>
-        </div>
-      </div>
-    )
-  },
-
-  // 现有业务模式
-  {
-    id: 8,
     type: SlideType.SPLIT,
     title: "现有业务模式的利弊",
     subtitle: "企业版 + GM（Gross Margin，毛利驱动）",
@@ -239,6 +210,26 @@ export const SLIDES: SlideData[] = [
         </div>
       </div>
     )
+  },
+
+  // ===== 结论 =====
+  {
+    id: 8,
+    type: SlideType.MATRIX,
+    title: "Dify 必须变",
+    subtitle: "三个核心模块的变革路径",
+    tableData: {
+      headers: ["模块", "变化趋势", "应对策略"],
+      rows: [
+        ["插件体系", "与 Skills 产生替代关系", "重新定义生态边界"],
+        ["RAG / 知识库", "范式转移，传统 RAG 不再主流", "拥抱 Context 工程"],
+        ["Workflow", "需要更柔性、更易用", "引入拉动式概念"]
+      ]
+    },
+    bottomBanner: {
+      text: "核心判断：所有模块都要改，只是改的路径不一样",
+      type: "warning"
+    }
   },
 
   // ========== PART 2: 三条产品线 ==========
