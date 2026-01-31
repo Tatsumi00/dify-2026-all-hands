@@ -7,15 +7,17 @@ import { AUTHOR_INFO, COMPANY_INFO } from './src/contents/common';
 import { Watermark } from './src/engine/components/Watermark';
 
 function SlideDeckApp() {
-  // Get deck ID from URL query parameter (e.g., ?deck=201)
+  // Get deck ID and slide number from URL (e.g., ?deck=201&slide=10)
   const searchParams = new URLSearchParams(window.location.search);
   const deckId = searchParams.get('deck');
+  const slideParam = searchParams.get('slide');
   
   // Simulating user for watermark
   const user = { email: 'template@dify.ai' };
   
   const [currentDeck, setCurrentDeck] = useState(deckId ? getDeck(deckId) : undefined);
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const initialSlide = slideParam ? Math.max(0, parseInt(slideParam) - 1) : 0;
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(initialSlide);
   const [isFullScreen, setIsFullScreen] = useState(false);
 
   // Default to first deck if no deck selected and only one exists, or show selector

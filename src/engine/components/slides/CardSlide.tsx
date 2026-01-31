@@ -73,7 +73,7 @@ const CardItem: React.FC<{ item: any, style?: React.CSSProperties }> = ({ item, 
   }
 
   return (
-       <div className={`${cardStyle} rounded-sm border p-6 shadow-sm transition-all duration-300 flex flex-col items-start gap-6 h-full relative overflow-hidden group opacity-0 animate-fade-in-up`} style={style}>
+       <div className={`${cardStyle} rounded-sm border p-6 shadow-sm transition-all duration-300 flex flex-col items-start gap-6 h-full min-h-[200px] relative overflow-hidden group opacity-0 animate-fade-in-up`} style={style}>
            <div className="flex w-full justify-between items-start">
                <div className={`w-14 h-14 rounded-sm flex items-center justify-center border transition-colors duration-300 flex-shrink-0 ${iconBg}`}>
                    {hasLogo ? (
@@ -177,7 +177,7 @@ export const CardSlide: React.FC<CardSlideProps> = ({ slide }) => {
     <div className="flex flex-col h-full p-6 sm:p-8 md:p-10 lg:p-14 xl:p-16 relative overflow-hidden">
        <BackgroundPattern />
        <SlideHeader title={slide.title} subtitle={slide.subtitle} />
-       <div className="flex-grow min-h-0 relative z-10 overflow-y-auto pr-2">
+       <div className="flex-grow min-h-0 relative z-10 flex items-center justify-center">
          {renderCards()}
        </div>
     </div>

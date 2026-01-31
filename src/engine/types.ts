@@ -28,14 +28,14 @@ export interface SlideItem {
   title: string;
   description?: string;
   logo?: string;
-  icon?: React.ReactNode; // New: For Lucide icons in cards
-  tags?: string[]; // New: For categories like "Basic App"
-  // New for Pricing
+  icon?: React.ReactNode;
+  tags?: string[];
   price?: string;
   priceUnit?: string;
   topBarColor?: string;
   badge?: string;
   features?: string[];
+  footer?: string;
 }
 
 export interface SlideData {

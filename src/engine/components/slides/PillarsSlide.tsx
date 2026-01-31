@@ -9,12 +9,12 @@ interface PillarsSlideProps {
 
 const PILLAR_STYLES = [
   { text: 'text-dify-blue', bg: 'bg-dify-blue', border: 'border-blue-200' },
-  { text: 'text-indigo-600', bg: 'bg-indigo-500', border: 'border-indigo-200' },
-  { text: 'text-emerald-600', bg: 'bg-emerald-500', border: 'border-emerald-200' },
+  { text: 'text-slate-600', bg: 'bg-slate-500', border: 'border-slate-200' },
+  { text: 'text-cyan-600', bg: 'bg-cyan-500', border: 'border-cyan-200' },
   { text: 'text-amber-600', bg: 'bg-amber-500', border: 'border-amber-200' },
   { text: 'text-rose-600', bg: 'bg-rose-500', border: 'border-rose-200' },
   { text: 'text-violet-600', bg: 'bg-violet-500', border: 'border-violet-200' },
-  { text: 'text-cyan-600', bg: 'bg-cyan-500', border: 'border-cyan-200' },
+  { text: 'text-emerald-600', bg: 'bg-emerald-500', border: 'border-emerald-200' },
 ];
 
 export const PillarsSlide: React.FC<PillarsSlideProps> = ({ slide }) => {
@@ -56,14 +56,14 @@ export const PillarsSlide: React.FC<PillarsSlideProps> = ({ slide }) => {
          )}
       </div>
 
-      <div className={`flex-1 flex items-end justify-center ${containerPadding} pb-8 sm:pb-12 lg:pb-16 ${gapSize} min-h-0`}>
+      <div className={`flex-1 flex items-start justify-center ${containerPadding} pb-4 sm:pb-6 lg:pb-8 pt-0 ${gapSize} min-h-0`}>
          {items.map((item, idx) => {
             const style = PILLAR_STYLES[idx % PILLAR_STYLES.length];
             
             return (
             <div 
               key={idx} 
-              className="flex-1 h-[85%] sm:h-[90%] flex flex-col items-center relative group opacity-0 animate-fade-in-up"
+              className="flex-1 h-[70%] sm:h-[75%] flex flex-col items-center relative group opacity-0 animate-fade-in-up"
               style={{ animationDelay: `${idx * 150}ms` }}
             >
                {/* === Modern Monolith Body (现代巨石) === */}
@@ -77,26 +77,32 @@ export const PillarsSlide: React.FC<PillarsSlideProps> = ({ slide }) => {
                   {/* Top Highlight Line (Lip) */}
                   <div className={`absolute top-0 left-0 w-full h-1.5 ${style.bg}`}></div>
 
-                  {/* Content */}
-                  <div className="relative z-10 flex flex-col items-center h-full pt-6 sm:pt-8 w-full">
-                      {/* Icon Box (Modern Square) */}
-                      <div className={`mb-4 sm:mb-6 md:mb-8 p-3 sm:p-4 rounded-sm bg-white border border-gray-100 shadow-sm group-hover:scale-110 group-hover:rotate-0 transition-transform duration-300 ${style.text}`}>
-                         {item.icon && React.cloneElement(item.icon as React.ReactElement<any>, { size: isCompact ? 28 : 32 })}
+                   {/* Content */}
+                   <div className="relative z-10 flex flex-col items-center h-full pt-4 sm:pt-5 w-full">
+                       {/* Icon Box (Modern Square) */}
+                       <div className={`mb-2 sm:mb-3 p-2 sm:p-3 rounded-sm bg-white border border-gray-100 shadow-sm group-hover:scale-110 group-hover:rotate-0 transition-transform duration-300 ${style.text}`}>
+                          {item.icon && React.cloneElement(item.icon as React.ReactElement<any>, { size: isCompact ? 24 : 28 })}
                       </div>
 
                       {/* Title */}
-                      <h3 className={`text-base sm:text-lg lg:text-2xl font-black text-center mb-3 sm:mb-4 leading-tight tracking-tight ${style.text}`}>
+                      <h3 className={`text-base sm:text-lg lg:text-2xl font-black text-center mb-0.5 leading-tight tracking-tight ${style.text}`}>
                         {item.title}
                       </h3>
+                      
+                      {/* Footer as subtitle under title */}
+                      {item.footer && (
+                        <p className="text-xs sm:text-sm text-gray-600 text-center mb-2">
+                          {item.footer}
+                        </p>
+                      )}
 
-                      <div className="w-12 h-1 bg-gray-100 rounded-full mb-4 sm:mb-6"></div>
+                      <div className="w-12 h-1 bg-gray-100 rounded-full mb-2"></div>
 
                       {/* Description */}
                       <p className="text-xs sm:text-sm lg:text-base text-gray-500 text-center leading-relaxed font-medium px-1 sm:px-2">
                         {item.description}
                       </p>
                       
-                      {/* Features List (Optional) */}
                       {item.features && item.features.length > 0 && (
                         <div className="mt-auto pt-4 w-full">
                           <ul className="space-y-2">

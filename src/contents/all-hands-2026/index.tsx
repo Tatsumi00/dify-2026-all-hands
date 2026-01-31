@@ -233,21 +233,57 @@ export const SLIDES: SlideData[] = [
   // ===== 结论 =====
   {
     id: 8,
-    type: SlideType.MATRIX,
+    type: SlideType.DIAGRAM,
     title: "Dify 必须变",
     subtitle: "三个核心模块的变革路径",
-    tableData: {
-      headers: ["模块", "变化趋势", "应对策略"],
-      rows: [
-        ["插件体系", "与 Skills 产生替代关系", "重新定义生态边界"],
-        ["RAG / 知识库", "范式转移，传统 RAG 不再主流", "拥抱 Context 工程"],
-        ["Workflow", "需要更柔性、更易用", "引入拉动式概念"]
-      ]
-    },
-    bottomBanner: {
-      text: "核心判断：所有模块都要改，只是改的路径不一样",
-      type: "warning"
-    }
+    visualContent: (
+      <div className="w-full max-w-5xl mx-auto">
+        <div className="overflow-hidden rounded-2xl border-2 border-gray-100 shadow-lg">
+          <table className="w-full">
+            <thead>
+              <tr className="bg-dify-blue text-white">
+                <th className="p-6 text-left font-bold text-lg">模块</th>
+                <th className="p-6 text-left font-bold text-lg">变化趋势</th>
+                <th className="p-6 text-left font-bold text-lg">应对策略</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b border-gray-100 hover:bg-blue-50 transition-colors">
+                <td className="p-6 flex items-center gap-3">
+                  <Layers className="text-dify-blue" size={24}/>
+                  <span className="font-bold text-gray-900 text-lg">插件体系</span>
+                </td>
+                <td className="p-6 text-gray-600 text-lg">与 Skills 产生替代关系</td>
+                <td className="p-6">
+                  <span className="bg-dify-blue/10 text-dify-blue px-4 py-2 rounded-full font-medium">重新定义生态边界</span>
+                </td>
+              </tr>
+              <tr className="border-b border-gray-100 hover:bg-blue-50 transition-colors">
+                <td className="p-6 flex items-center gap-3">
+                  <Lightbulb className="text-dify-blue" size={24}/>
+                  <span className="font-bold text-gray-900 text-lg">RAG / 知识库</span>
+                </td>
+                <td className="p-6 text-gray-600 text-lg">范式转移，传统 RAG 不再主流</td>
+                <td className="p-6">
+                  <span className="bg-dify-blue/10 text-dify-blue px-4 py-2 rounded-full font-medium">拥抱 Context 工程</span>
+                </td>
+              </tr>
+              <tr className="hover:bg-blue-50 transition-colors">
+                <td className="p-6 flex items-center gap-3">
+                  <Zap className="text-dify-blue" size={24}/>
+                  <span className="font-bold text-gray-900 text-lg">Workflow</span>
+                </td>
+                <td className="p-6 text-gray-600 text-lg">需要更柔性、更易用</td>
+                <td className="p-6">
+                  <span className="bg-dify-blue/10 text-dify-blue px-4 py-2 rounded-full font-medium">引入拉动式概念</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-center text-lg text-gray-500 mt-8">核心判断：所有模块都要改，只是改的路径不一样</p>
+      </div>
+    )
   },
 
   // ========== PART 2: 三条产品线 ==========
@@ -270,144 +306,122 @@ export const SLIDES: SlideData[] = [
         title: "CE & EE 线",
         description: "70% 投入",
         icon: <Code className="text-dify-blue" size={48}/>,
-        features: ["CE：周宇 + 海明", "EE：Kiji", "技术底座 + 企业服务", "中美两套 IP"]
+        features: ["CE：周宇 + 海明", "EE：Kiji", "技术底座 + 企业服务", "中美两套 IP"],
+        footer: "稳住基本盘，保持技术领先"
       },
       {
         title: "SaaS 线",
         description: "20% 投入",
         icon: <Cloud className="text-dify-blue" size={48}/>,
-        features: ["王征 + 梓浩", "从主仓独立", "海外 SMB 市场", "北美垂直 PMF"]
+        features: ["王征 + 梓浩", "从主仓独立", "海外 SMB 市场", "北美垂直 PMF"],
+        footer: "从主仓解耦，独立变现"
       },
       {
         title: "新世代产品",
         description: "10% 早期投入",
         icon: <Palette className="text-dify-blue" size={48}/>,
-        features: ["CEO 亲自带队", "TPS 理念新画布", "北美 R&D 团队", "Innovation Labs"]
+        features: ["CEO 亲自带队", "TPS 理念新画布", "北美 R&D 团队", "Innovation Labs"],
+        footer: "抓住窗口期，实现战略突破"
       }
     ]
   },
 
-  // P0-2: 为什么是三条线
-  {
-    id: 11,
-    type: SlideType.CONTENT,
-    title: "为什么是三条线？",
-    subtitle: "三条线协同，各有定位，缺一不可",
-    content: [
-      "**第一条线：稳住基本盘，保持技术领先**",
-      "维护开源社区和企业客户，确保技术底座稳固",
-      "",
-      "**第二条线：从主仓解耦，独立变现**",
-      "SaaS 化产品独立迭代，不受主仓节奏限制",
-      "",
-      "**第三条线：抓住窗口期，实现战略突破**",
-      "画布业务代表未来方向，需要全力投入"
-    ],
-    bottomBanner: {
-      text: "结论：三条线各有使命，形成完整的产品战略布局",
-      type: "info"
-    }
-  },
-
   // 第一条线详情
   {
-    id: 12,
-    type: SlideType.MATRIX,
+    id: 11,
+    type: SlideType.SPLIT,
     title: "第一条线：CE & EE（70%）",
-    subtitle: "组织重构，明确分工",
-    tableData: {
-      headers: ["业务模块", "负责人", "汇报线", "核心目标"],
-      rows: [
-        ["CE 产品", "周宇 + 海明", "→ CEO", "维护开源社区，保持技术领先"],
-        ["EE 产品线", "Kiji", "→ CEO", "结合 DE 团队，年内实现中美两套 IP"],
-        ["Digital Marketing", "田磊", "→ CEO", "转守为攻，服务 PMF 优势市场，品牌统筹"],
-        ["运营体系", "赵雅雯", "→ CEO/海明", "文档/DevRel/社区/技术支持/生态运营"],
-        ["质量组（新）", "戴志强", "→ Boyan", "建立质量保障体系"],
-        ["BizOps & CRM", "—", "→ 潘潘", "移交财务线统一管理"]
-      ]
-    },
-    bottomBanner: {
-      text: "北美：文斯、子轩移交 Andy (北美 GM) 管理，文斯不再承担管理职能",
-      type: "info"
-    }
+    subtitle: "稳住基本盘，保持技术领先",
+    content: [
+      "**核心变化**",
+      "CE 与 EE 分离，各自独立迭代",
+      "新设质量组，建立保障体系",
+      "北美团队统一由北美 GM 管理",
+      "",
+      "**战略目标**",
+      "维护开源社区领先地位",
+      "年内实现中美两套独立 IP",
+      "Marketing 转守为攻，聚焦 PMF 市场"
+    ],
+    visualContent: (
+      <div className="flex flex-col items-center justify-center h-full w-full">
+        <Code size={80} className="text-dify-blue mb-6"/>
+        <p className="text-2xl font-bold text-slate-800 mb-3 text-center">
+          技术底座 + 企业服务
+        </p>
+        <p className="text-base text-slate-500 leading-relaxed text-center">
+          开源社区是护城河<br/>
+          企业版是现金流
+        </p>
+      </div>
+    )
   },
 
   // 第二条线详情
   {
-    id: 13,
+    id: 12,
     type: SlideType.SPLIT,
     title: "第二条线：SaaS（20%）",
-    subtitle: "王征 + 梓浩 Coleader | 定位：海外 SMB",
+    subtitle: "从主仓解耦，独立变现",
     content: [
       "**核心变化**",
       "SaaS 从 CE 主仓彻底拆分",
       "独立代码库、独立迭代节奏",
+      "团队整合，统一作战",
       "",
-      "**团队重组**",
-      "现有 SaaS 团队 + 王征团队合并",
-      "Ben 专注北美垂直 PMF 策略支持",
-      "",
-      "**目标市场**",
-      "中国以外地区的 SMB 业务",
-      "承担 ARR 目标，独立验证商业模式"
+      "**战略目标**",
+      "聚焦海外 SMB 市场",
+      "承担独立 ARR 目标",
+      "快速验证商业模式"
     ],
     visualContent: (
-      <div className="flex items-center justify-center h-full">
-        <div className="bg-gradient-to-br from-blue-50 to-white border-2 border-dify-blue/20 rounded-xl p-8 text-center max-w-md">
-          <Cloud size={48} className="mx-auto text-dify-blue mb-4"/>
-          <p className="text-xl font-bold text-slate-800 mb-2">
-            从主仓解耦 = 独立迭代
-          </p>
-          <p className="text-slate-600">
-            不再受主仓节奏限制<br/>
-            快速响应海外市场需求
-          </p>
-        </div>
+      <div className="flex flex-col items-center justify-center h-full w-full">
+        <Cloud size={80} className="text-slate-500 mb-6"/>
+        <p className="text-2xl font-bold text-slate-800 mb-3 text-center">
+          独立 = 快速
+        </p>
+        <p className="text-base text-slate-500 leading-relaxed text-center">
+          不再受主仓节奏限制<br/>
+          快速响应海外市场需求
+        </p>
       </div>
     )
   },
 
   // 第三条线详情
   {
-    id: 14,
+    id: 13,
     type: SlideType.SPLIT,
     title: "第三条线：新世代产品（10%）",
-    subtitle: "CEO 亲自带队 | TPS 理念新画布",
+    subtitle: "抓住窗口期，实现战略突破",
     content: [
-      "**团队构成**",
-      "CEO (张路宇) Leader",
-      "Gu 等北美 R&D 人员",
+      "**核心变化**",
+      "CEO 亲自带队，北美 R&D 支撑",
+      "新设 Innovation Labs 孵化前沿技术",
+      "研究成果输出到三条产品线",
       "",
-      "**核心目标**",
-      "打造基于 TPS 理念的新画布产品",
-      "找到 Product-Market Fit",
-      "",
-      "**Innovation Labs（新设）**",
-      "由 Kiji 管理",
-      "承载技术研究和实验",
-      "成果纳入三条产品线实现产品化"
+      "**战略目标**",
+      "打造 TPS 理念新画布产品",
+      "寻找 Product-Market Fit",
+      "代表 Dify 的未来方向"
     ],
     visualContent: (
-      <div className="flex flex-col items-center justify-center h-full gap-6">
-        <div className="bg-gradient-to-br from-purple-50 to-white border-2 border-purple-200 rounded-xl p-6 text-center max-w-sm">
-          <Palette size={40} className="mx-auto text-dify-blue mb-3"/>
-          <p className="text-lg font-bold text-slate-800 mb-2">新世代产品</p>
-          <p className="text-sm text-slate-600">TPS 理念 × 画布交互</p>
-          <p className="text-xs text-dify-blue mt-2">→ 寻找 PMF</p>
-        </div>
-        <div className="bg-gradient-to-br from-indigo-50 to-white border-2 border-indigo-200 rounded-xl p-6 text-center max-w-sm">
-          <Lightbulb size={40} className="mx-auto text-indigo-500 mb-3"/>
-          <p className="text-lg font-bold text-slate-800 mb-2">Innovation Labs</p>
-          <p className="text-sm text-slate-600">Kiji 管理 · 技术研究 · 实验孵化</p>
-          <p className="text-xs text-indigo-500 mt-2">→ 成果输出到三条产品线</p>
-        </div>
+      <div className="flex flex-col items-center justify-center h-full w-full">
+        <Palette size={80} className="text-cyan-600 mb-6"/>
+        <p className="text-2xl font-bold text-slate-800 mb-3 text-center">
+          未来 = 现在的投入
+        </p>
+        <p className="text-base text-slate-500 leading-relaxed text-center">
+          10% 资源押注下一代产品<br/>
+          Innovation Labs 持续孵化
+        </p>
       </div>
     )
   },
 
   // ========== PART 3: DRI 制度 ==========
   {
-    id: 15,
+    id: 14,
     type: SlideType.SECTION,
     title: "组织创新：DRI 制度",
     subtitle: "有权力才有责任，广泛听取、独立决策",
@@ -415,7 +429,7 @@ export const SLIDES: SlideData[] = [
   },
 
   {
-    id: 16,
+    id: 15,
     type: SlideType.CARDS,
     title: "为什么引入 DRI？",
     subtitle: "团队扩大到 100 人，大企业病早期症状出现",
@@ -439,20 +453,14 @@ export const SLIDES: SlideData[] = [
   },
 
   {
-    id: 17,
+    id: 16,
     type: SlideType.SPLIT,
     title: "什么是 DRI？",
     subtitle: "Directly Responsible Individual",
     content: [
-      "对于任何一个项目、任务或会议议题",
-      "**必须有且仅有一个人**",
-      "对最终结果的成败负责",
-      "",
-      "**来源：** Apple（Steve Jobs 发明）→ GitLab（2000+ 人远程公司核心机制）→ Dify",
-      "",
-      "**在 Dify，DRI 不是为了分派任务，而是为了：**",
-      "锁定责任",
-      "授权决策"
+      "**在 Dify，DRI 是为了：**",
+      "- **锁定责任**：明确谁来拍板",
+      "- **授权决策**：给予相应权力"
     ],
     visualContent: (
       <div className="flex flex-col items-center justify-center h-full">
@@ -468,68 +476,19 @@ export const SLIDES: SlideData[] = [
             <p className="text-xl opacity-90">对最终结果负责</p>
           </div>
         </div>
-        <div className="mt-8 flex gap-4">
-          <div className="bg-gray-100 px-4 py-2 rounded-lg text-sm font-medium text-gray-600">Apple</div>
-          <ArrowRight className="text-gray-400" />
-          <div className="bg-gray-100 px-4 py-2 rounded-lg text-sm font-medium text-gray-600">GitLab</div>
-          <ArrowRight className="text-gray-400" />
-          <div className="bg-dify-blue px-4 py-2 rounded-lg text-sm font-bold text-white">Dify</div>
+        <div className="mt-8 flex gap-3 items-center">
+          <div className="bg-gray-100 px-3 py-1.5 rounded text-xs font-medium text-gray-500">Apple 发明</div>
+          <ArrowRight size={16} className="text-gray-300" />
+          <div className="bg-gray-100 px-3 py-1.5 rounded text-xs font-medium text-gray-500">GitLab 推广</div>
+          <ArrowRight size={16} className="text-gray-300" />
+          <div className="bg-dify-blue px-3 py-1.5 rounded text-xs font-bold text-white">Dify 落地</div>
         </div>
       </div>
     )
   },
 
-  // P1-7: DRI 场景示例
   {
-    id: 18,
-    type: SlideType.MATRIX,
-    title: "DRI 的四大职责",
-    subtitle: "DRI 不是干活最多的人，而是扫除障碍、整合资源的人",
-    tableData: {
-      headers: ["职责", "说明"],
-      rows: [
-        ["定义范围", "抵制 Scope Creep，守住边界"],
-        ["主动推动", "不能说「我在等设计」，要主动拉齐"],
-        ["信息枢纽", "汇聚和分发信息，确保透明"],
-        ["风险预警", "第一时间举手，不藏问题"]
-      ]
-    },
-    bottomBanner: {
-      text: "关键区分：Task Owner 对代码质量负责，Project DRI 对项目按时上线负责",
-      type: "warning"
-    }
-  },
-
-  {
-    id: 19,
-    type: SlideType.CARDS,
-    title: "负责的定义",
-    subtitle: "DRI 机制下，负责不是背锅",
-    items: [
-      {
-        title: "Ownership",
-        description: "你可以决定怎么做",
-        icon: <Target className="text-dify-blue"/>
-      },
-      {
-        title: "Accountability",
-        description: "出问题时你来主持解决",
-        icon: <Shield className="text-dify-blue"/>
-      },
-      {
-        title: "Improvement",
-        description: "失败后你组织复盘",
-        icon: <GitBranch className="text-dify-blue"/>
-      }
-    ],
-    bottomBanner: {
-      text: "我们实行 Blameless Culture：只要不是恶意疏忽，一次尝试的失败不会受罚",
-      type: "info"
-    }
-  },
-
-  {
-    id: 20,
+    id: 17,
     type: SlideType.ACCORDION,
     title: "DRI 三大核心原则",
     items: [
@@ -551,24 +510,8 @@ export const SLIDES: SlideData[] = [
     ]
   },
 
-  // Leader 与 DRI 的边界
   {
-    id: 21,
-    type: SlideType.MATRIX,
-    title: "Leader 与 DRI 的边界",
-    subtitle: "这是 DRI 制度能否落地的关键",
-    tableData: {
-      headers: ["红线", "说明"],
-      rows: [
-        ["Context not Control", "Leader 定目标，不控细节。指点欢迎，指指点点禁止"],
-        ["否决权的代价", "Leader 推翻 DRI 方案 = 责任转移到 Leader"],
-        ["方向盘原则", "无法忍受就正式撤换 DRI，不要挂名 DRI + 隐形控制者"]
-      ]
-    }
-  },
-
-  {
-    id: 22,
+    id: 18,
     type: SlideType.SPLIT,
     title: "对员工和主管的要求",
     content: [
@@ -631,56 +574,11 @@ export const SLIDES: SlideData[] = [
     )
   },
 
-  // DRI 效果
-  {
-    id: 23,
-    type: SlideType.KEY_TAKEAWAYS,
-    title: "DRI 制度的预期效果",
-    content: [
-      "团队拆得更小",
-      "一线人权力更大",
-      "能和不能的人会被快速识别出来"
-    ]
-  },
-
-  // ========== PART 4: 总结 ==========
-  {
-    id: 24,
-    type: SlideType.SECTION,
-    title: "总结",
-    subtitle: "核心信息与行动指南",
-    footer: "第四部分"
-  },
-
-  {
-    id: 25,
-    type: SlideType.CARDS,
-    title: "核心信息",
-    subtitle: "2026 年的三个关键变化",
-    items: [
-      {
-        title: "外部环境变",
-        description: "模型军备竞赛\n范式转移",
-        icon: <TrendingUp className="text-dify-blue"/>
-      },
-      {
-        title: "产品战略变",
-        description: "三条产品线\n各有定位",
-        icon: <Layers className="text-dify-blue"/>
-      },
-      {
-        title: "组织架构变",
-        description: "DRI 制度\n权责清晰",
-        icon: <Users className="text-dify-blue"/>
-      }
-    ]
-  },
-
   // 行动号召 - 用 CARDS 更醒目
   {
-    id: 26,
+    id: 19,
     type: SlideType.CARDS,
-    title: "从今天开始，你需要做三件事",
+    title: "总结：从今天开始，你只需要做三件事",
     subtitle: "行动号召",
     items: [
       {
@@ -707,10 +605,9 @@ export const SLIDES: SlideData[] = [
 
   // END
   {
-    id: 27,
+    id: 20,
     type: SlideType.END,
     title: "Q&A",
-    subtitle: "谢谢大家",
-    footer: "Email: luyu@dify.ai | GitHub: langgenius"
+    subtitle: "谢谢大家"
   }
 ];

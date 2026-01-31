@@ -24,12 +24,12 @@ export const SimpleBullets = ({ items }: { items?: string[] }) => {
     // Dynamic Text Size Classes
     const getTitleClass = (isBigTitle: boolean) => {
         if (isVeryDense) {
-            return isBigTitle ? "text-2xl sm:text-3xl" : "text-lg sm:text-xl";
+            return isBigTitle ? "text-xl sm:text-2xl" : "text-lg sm:text-xl";
         }
         if (isDense) {
-            return isBigTitle ? "text-3xl sm:text-4xl" : "text-xl sm:text-2xl";
+            return isBigTitle ? "text-2xl sm:text-3xl" : "text-xl sm:text-2xl";
         }
-        return isBigTitle ? "text-4xl sm:text-5xl md:text-6xl tracking-tight" : "text-2xl sm:text-3xl";
+        return isBigTitle ? "text-2xl sm:text-3xl md:text-4xl tracking-tight" : "text-xl sm:text-2xl";
     };
 
     const getDescClass = (isSubtitle: boolean) => {
@@ -114,18 +114,18 @@ export const SimpleBullets = ({ items }: { items?: string[] }) => {
 
 export const SplitSlide: React.FC<SlideProps> = ({ slide }) => {
   return (
-    <div className="flex flex-col h-full p-6 sm:p-8 md:p-10 lg:p-14 xl:p-16 relative overflow-hidden">
+    <div className="flex flex-col h-full p-6 sm:p-8 md:p-10 lg:p-12 relative overflow-hidden">
       <BackgroundPattern />
       <SlideHeader title={slide.title} subtitle={slide.subtitle} />
-      <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-20 flex-1 items-center justify-center relative z-10 min-h-0">
-          <div className={`w-full ${slide.visualContent ? 'lg:w-[60%]' : 'lg:w-3/4 mx-auto'} flex flex-col justify-center pt-2 min-h-0 overflow-auto h-full`}>
-             <div className="max-w-prose">
+      <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 flex-1 items-center justify-center relative z-10 min-h-0">
+          <div className={`w-full ${slide.visualContent ? 'lg:w-[55%]' : 'lg:w-3/4 mx-auto'} flex flex-col justify-center items-end pt-2 min-h-0 overflow-auto h-full`}>
+             <div className="max-w-md w-full lg:pr-4">
                 <SimpleBullets items={slide.content} />
              </div>
           </div>
           {slide.visualContent && (
-          <div className="w-full lg:w-[40%] h-full min-h-0 bg-white border border-gray-100 shadow-sm flex items-center justify-center p-6 sm:p-8 relative overflow-hidden opacity-0 animate-scale-up rounded-sm" style={{ animationDelay: '300ms' }}>
-             <div className="relative z-10 w-full h-full flex items-center justify-center">
+          <div className="w-full lg:w-[45%] h-full min-h-0 flex items-center justify-start relative overflow-hidden opacity-0 animate-scale-up" style={{ animationDelay: '300ms' }}>
+             <div className="relative z-10 flex items-center justify-start lg:pl-4">
                {slide.visualContent}
              </div>
           </div>
