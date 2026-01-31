@@ -95,28 +95,28 @@ export const SLIDES: SlideData[] = [
     subtitle: "四个改变行业的时刻",
     items: [
       {
-        title: "1月",
-        description: "**DeepSeek R1**\n$6M 成本达前沿性能\nSputnik moment",
+        title: "开源重塑",
+        description: "Q1，DeepSeek 以极致推理效率 + 开源生态\n打破闭源垄断，重构 AI Infra 性价比基准",
         icon: <Rocket className="text-dify-blue"/>,
-        tags: ["模型"]
+        tags: ["Q1"]
       },
       {
-        title: "2月",
-        description: "**Claude Code**\nAI 编程工具爆发元年",
+        title: "形态进化",
+        description: "Q2，Claude Code / Manus 落地\nAgent 从概念到生产力工具，定义 GA 交互形态",
         icon: <Code className="text-dify-blue"/>,
-        tags: ["工具"]
+        tags: ["Q2"]
       },
       {
-        title: "8月",
-        description: "**GPT-5 发布**\n幻觉率降低 45%\n多模态成熟",
+        title: "全能力对齐",
+        description: "Q3，多模态 × 逻辑推理达成共识\n模型能力进入全方位、低延迟感知统一时代",
+        icon: <Layers className="text-dify-blue"/>,
+        tags: ["Q3"]
+      },
+      {
+        title: "开发范式转移",
+        description: "Q4，软件工程进入 AI 原生阶段\nCoding Agent 从辅助工具质变为独立开发者",
         icon: <Sparkles className="text-dify-blue"/>,
-        tags: ["模型"]
-      },
-      {
-        title: "10月",
-        description: "**Nvidia $5T**\n人类历史首个\n$5 万亿市值公司",
-        icon: <TrendingUp className="text-dify-blue"/>,
-        tags: ["市场"]
+        tags: ["Q4"]
       }
     ]
   },
