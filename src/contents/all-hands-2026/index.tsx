@@ -121,38 +121,9 @@ export const SLIDES: SlideData[] = [
     ]
   },
 
-  {
-    id: 6,
-    type: SlideType.CARDS,
-    title: "范式转移信号",
-    subtitle: "行业规则正在被重写",
-    items: [
-      {
-        title: "前沿模型民主化",
-        description: "DeepSeek 证明小团队也能做前沿模型",
-        icon: <Rocket className="text-dify-blue"/>
-      },
-      {
-        title: "Vibe Coding 元年",
-        description: "AI 辅助编程成为主流工作方式",
-        icon: <Code className="text-dify-blue"/>
-      },
-      {
-        title: "百万 Token 标配",
-        description: "长上下文能力成为基础能力",
-        icon: <Layers className="text-dify-blue"/>
-      },
-      {
-        title: "Agent 成新主流",
-        description: "从确定性流程转向自主决策",
-        icon: <Lightbulb className="text-dify-blue"/>
-      }
-    ]
-  },
-
   // Dify 必须变
   {
-    id: 7,
+    id: 6,
     type: SlideType.MATRIX,
     title: "Dify 必须变",
     subtitle: "三个核心模块的变革路径",
@@ -172,7 +143,7 @@ export const SLIDES: SlideData[] = [
 
   // Google Trends - 更专业的数据可视化
   {
-    id: 8,
+    id: 7,
     type: SlideType.DIAGRAM,
     title: "Google Trends 印证趋势变化",
     subtitle: "搜索热度反映市场关注度迁移（2024.1 - 2025.12）",
@@ -241,7 +212,7 @@ export const SLIDES: SlideData[] = [
 
   // 现有业务模式
   {
-    id: 9,
+    id: 8,
     type: SlideType.SPLIT,
     title: "现有业务模式的利弊",
     subtitle: "企业版 + GM（Gross Margin，毛利驱动）",
@@ -272,7 +243,7 @@ export const SLIDES: SlideData[] = [
 
   // ========== PART 2: 三条产品线 ==========
   {
-    id: 10,
+    id: 9,
     type: SlideType.SECTION,
     title: "2026 战略：三条产品线",
     subtitle: "明确分工，各司其职",
@@ -281,7 +252,7 @@ export const SLIDES: SlideData[] = [
 
   // 产品矩阵概览 - 用 PILLARS 展示三条产品线
   {
-    id: 11,
+    id: 10,
     type: SlideType.PILLARS,
     title: "Dify 产品矩阵",
     subtitle: "三条产品线，三个战场",
@@ -309,7 +280,7 @@ export const SLIDES: SlideData[] = [
 
   // P0-2: 为什么是三条线
   {
-    id: 12,
+    id: 11,
     type: SlideType.CONTENT,
     title: "为什么是三条线？",
     subtitle: "三条线协同，各有定位，缺一不可",
@@ -331,7 +302,7 @@ export const SLIDES: SlideData[] = [
 
   // 第一条线详情
   {
-    id: 13,
+    id: 12,
     type: SlideType.MATRIX,
     title: "第一条线：CE & EE（70%）",
     subtitle: "组织重构，明确分工",
@@ -354,7 +325,7 @@ export const SLIDES: SlideData[] = [
 
   // 第二条线详情
   {
-    id: 14,
+    id: 13,
     type: SlideType.SPLIT,
     title: "第二条线：SaaS（20%）",
     subtitle: "王征 + 梓浩 Coleader | 定位：海外 SMB",
@@ -389,7 +360,7 @@ export const SLIDES: SlideData[] = [
 
   // 第三条线详情
   {
-    id: 15,
+    id: 14,
     type: SlideType.SPLIT,
     title: "第三条线：新世代产品（10%）",
     subtitle: "CEO 亲自带队 | TPS 理念新画布",
@@ -427,7 +398,7 @@ export const SLIDES: SlideData[] = [
 
   // ========== PART 3: DRI 制度 ==========
   {
-    id: 16,
+    id: 15,
     type: SlideType.SECTION,
     title: "组织创新：DRI 制度",
     subtitle: "有权力才有责任，广泛听取、独立决策",
@@ -435,7 +406,7 @@ export const SLIDES: SlideData[] = [
   },
 
   {
-    id: 17,
+    id: 16,
     type: SlideType.CARDS,
     title: "为什么引入 DRI？",
     subtitle: "团队扩大到 100 人，大企业病早期症状出现",
@@ -459,7 +430,7 @@ export const SLIDES: SlideData[] = [
   },
 
   {
-    id: 18,
+    id: 17,
     type: SlideType.SPLIT,
     title: "什么是 DRI？",
     subtitle: "Directly Responsible Individual",
@@ -501,7 +472,7 @@ export const SLIDES: SlideData[] = [
 
   // P1-7: DRI 场景示例
   {
-    id: 19,
+    id: 18,
     type: SlideType.MATRIX,
     title: "DRI 的四大职责",
     subtitle: "DRI 不是干活最多的人，而是扫除障碍、整合资源的人",
@@ -521,7 +492,7 @@ export const SLIDES: SlideData[] = [
   },
 
   {
-    id: 20,
+    id: 19,
     type: SlideType.CARDS,
     title: "负责的定义",
     subtitle: "DRI 机制下，负责不是背锅",
@@ -549,7 +520,7 @@ export const SLIDES: SlideData[] = [
   },
 
   {
-    id: 21,
+    id: 20,
     type: SlideType.ACCORDION,
     title: "DRI 三大核心原则",
     items: [
@@ -573,7 +544,7 @@ export const SLIDES: SlideData[] = [
 
   // Leader 与 DRI 的边界
   {
-    id: 22,
+    id: 21,
     type: SlideType.MATRIX,
     title: "Leader 与 DRI 的边界",
     subtitle: "这是 DRI 制度能否落地的关键",
@@ -588,7 +559,7 @@ export const SLIDES: SlideData[] = [
   },
 
   {
-    id: 23,
+    id: 22,
     type: SlideType.SPLIT,
     title: "对员工和主管的要求",
     content: [
@@ -653,7 +624,7 @@ export const SLIDES: SlideData[] = [
 
   // DRI 效果
   {
-    id: 24,
+    id: 23,
     type: SlideType.KEY_TAKEAWAYS,
     title: "DRI 制度的预期效果",
     content: [
@@ -665,7 +636,7 @@ export const SLIDES: SlideData[] = [
 
   // ========== PART 4: 总结 ==========
   {
-    id: 25,
+    id: 24,
     type: SlideType.SECTION,
     title: "总结",
     subtitle: "核心信息与行动指南",
@@ -673,7 +644,7 @@ export const SLIDES: SlideData[] = [
   },
 
   {
-    id: 26,
+    id: 25,
     type: SlideType.CARDS,
     title: "核心信息",
     subtitle: "2026 年的三个关键变化",
@@ -698,7 +669,7 @@ export const SLIDES: SlideData[] = [
 
   // 行动号召 - 用 CARDS 更醒目
   {
-    id: 27,
+    id: 26,
     type: SlideType.CARDS,
     title: "从今天开始，你需要做三件事",
     subtitle: "行动号召",
@@ -727,7 +698,7 @@ export const SLIDES: SlideData[] = [
 
   // END
   {
-    id: 28,
+    id: 27,
     type: SlideType.END,
     title: "Q&A",
     subtitle: "谢谢大家",
