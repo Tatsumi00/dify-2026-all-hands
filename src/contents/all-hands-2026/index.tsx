@@ -184,28 +184,46 @@ export const SLIDES: SlideData[] = [
 
   {
     id: 7,
-    type: SlideType.SPLIT,
+    type: SlideType.DIAGRAM,
     title: "现有业务模式的利弊",
     subtitle: "企业版 + GM（Gross Margin，毛利驱动）",
-    content: [
-      "**优势**",
-      "稳定的现金流",
-      "",
-      "**劣势**",
-      "需求收集速度不够快",
-      "不能加杠杆",
-      "线性增长",
-      "会错过机遇"
-    ],
     visualContent: (
-      <div className="flex items-center justify-center h-full">
-        <div className="bg-gray-50 border-2 border-gray-100 rounded-xl p-8 text-center max-w-md">
-          <AlertTriangle size={48} className="mx-auto text-dify-blue mb-4"/>
-          <p className="text-lg font-medium text-slate-700">
-            这是一个<span className="text-gray-900 font-bold">合格的业务</span>
-          </p>
-          <p className="text-lg font-medium text-slate-700 mt-2">
-            但不是一个与当前机会体量匹配的<span className="text-dify-blue font-bold">兴奋的业务</span>
+      <div className="flex flex-col h-full justify-center">
+        <div className="grid grid-cols-2 gap-16 w-full max-w-5xl mx-auto">
+          <div className="flex flex-col">
+            <h3 className="text-3xl font-extrabold text-dify-blue mb-6">优势</h3>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-4 text-xl text-gray-700">
+                <span className="text-dify-blue mt-1">✓</span>
+                <span>稳定的现金流</span>
+              </li>
+            </ul>
+          </div>
+          <div className="flex flex-col">
+            <h3 className="text-3xl font-extrabold text-gray-500 mb-6">劣势</h3>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-4 text-xl text-gray-700">
+                <span className="text-gray-400 mt-1">×</span>
+                <span>需求收集速度不够快</span>
+              </li>
+              <li className="flex items-start gap-4 text-xl text-gray-700">
+                <span className="text-gray-400 mt-1">×</span>
+                <span>不能加杠杆</span>
+              </li>
+              <li className="flex items-start gap-4 text-xl text-gray-700">
+                <span className="text-gray-400 mt-1">×</span>
+                <span>线性增长</span>
+              </li>
+              <li className="flex items-start gap-4 text-xl text-gray-700">
+                <span className="text-gray-400 mt-1">×</span>
+                <span>会错过机遇</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="mt-12 text-center">
+          <p className="text-2xl text-slate-600">
+            这是一个<span className="text-gray-900 font-bold">合格的业务</span>，但不是一个与当前机会体量匹配的<span className="text-dify-blue font-bold">兴奋的业务</span>
           </p>
         </div>
       </div>
